@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jordan Ellis — Multidisciplinary Creative Director & Brand Architect. Transforming ideas into impactful visual narratives." />
-  <meta name="author" content="Jordan Ellis" />
-  <title>Jordan Ellis | Creative Director & Brand Architect</title>
+  <meta name="description" content="Alex Morgan — Senior Product Strategist & UX Leader. Turning complex problems into elegant, human-centred solutions." />
+  <meta name="author" content="Alex Morgan" />
+  <title>Alex Morgan | Product Strategist & UX Leader</title>
 
-  <!-- Fonts -->
+  <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet" />
+
+  <!-- Fonts: Clash Display (headlines) + Satoshi (body) via Google Fonts fallback -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
@@ -23,193 +25,236 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
 
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- Custom Cursor -->
-  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+  <!-- ░░ CURSOR ░░ -->
+  <div id="cursorDot"  class="cursor-dot"  aria-hidden="true"></div>
+  <div id="cursorRing" class="cursor-ring" aria-hidden="true"></div>
 
-  <!-- Scroll Progress Bar -->
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <!-- ░░ SCROLL PROGRESS ░░ -->
+  <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
 
-  <!-- HEADER -->
-  <header class="site-header" id="siteHeader" role="banner">
-    <div class="header-inner">
-      <a href="#hero" class="nav-logo" aria-label="Jordan Ellis home">
-        <span class="logo-mark">JE</span>
-        <span class="logo-text">Jordan Ellis</span>
+  <!-- ░░ HEADER ░░ -->
+  <header id="siteHeader" class="site-header" role="banner">
+    <div class="header-inner container-xl">
+      <a href="#hero" class="logo" aria-label="Alex Morgan — home">
+        <span class="logo-box">AM</span>
+        <span class="logo-name">Alex Morgan</span>
       </a>
-      <div class="header-controls">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" aria-pressed="false">
-          <span class="toggle-track" aria-hidden="true">
-            <span class="toggle-thumb"></span>
-            <i class="bi bi-sun-fill toggle-icon toggle-icon--light"></i>
-            <i class="bi bi-moon-fill toggle-icon toggle-icon--dark"></i>
+      <div class="header-actions">
+        <!-- Theme toggle -->
+        <button id="themeToggle" class="theme-btn" aria-label="Toggle colour theme" aria-pressed="false">
+          <span class="theme-btn__track">
+            <span class="theme-btn__thumb"></span>
+            <i class="bi bi-sun-fill  theme-icon theme-icon--sun"></i>
+            <i class="bi bi-moon-fill theme-icon theme-icon--moon"></i>
           </span>
         </button>
-        <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navOverlay">
-          <span class="ham-line ham-line--top"></span>
-          <span class="ham-line ham-line--mid"></span>
-          <span class="ham-line ham-line--bot"></span>
+        <!-- Hamburger -->
+        <button id="menuToggle" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
+          <span class="bar bar--top"></span>
+          <span class="bar bar--mid"></span>
+          <span class="bar bar--bot"></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- NAV OVERLAY -->
-  <div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
-    <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
-    <nav class="nav-panel" id="navPanel">
-      <div class="nav-panel__inner">
-        <div class="nav-panel__top">
-          <span class="nav-panel__label">Menu</span>
-          <button class="nav-close" id="navClose" aria-label="Close navigation">
+  <!-- ░░ NAV DRAWER ░░ -->
+  <div id="navDrawer" class="nav-drawer" role="dialog" aria-modal="true" aria-label="Site navigation">
+    <div id="drawerBackdrop" class="drawer-backdrop"></div>
+    <nav class="drawer-panel" id="drawerPanel">
+      <div class="drawer-inner">
+        <div class="drawer-head">
+          <span class="drawer-label">Navigation</span>
+          <button id="drawerClose" class="drawer-close" aria-label="Close menu">
             <i class="bi bi-x-lg"></i>
           </button>
         </div>
-        <ul class="nav-links" role="list">
-          <li class="nav-link-item"><a href="#hero"         class="nav-link"><span class="nav-num">01</span>Home</a></li>
-          <li class="nav-link-item"><a href="#about"        class="nav-link"><span class="nav-num">02</span>About</a></li>
-          <li class="nav-link-item"><a href="#services"     class="nav-link"><span class="nav-num">03</span>Services</a></li>
-          <li class="nav-link-item"><a href="#why-us"       class="nav-link"><span class="nav-num">04</span>Why Us</a></li>
-          <li class="nav-link-item"><a href="#work"         class="nav-link"><span class="nav-num">05</span>Work</a></li>
-          <li class="nav-link-item"><a href="#testimonials" class="nav-link"><span class="nav-num">06</span>Testimonials</a></li>
-          <li class="nav-link-item"><a href="#contact"      class="nav-link"><span class="nav-num">07</span>Contact</a></li>
+
+        <ul class="drawer-nav" role="list">
+          <li><a href="#hero"         class="dnav-link"><em>01</em>Home</a></li>
+          <li><a href="#about"        class="dnav-link"><em>02</em>About</a></li>
+          <li><a href="#services"     class="dnav-link"><em>03</em>Services</a></li>
+          <li><a href="#why"          class="dnav-link"><em>04</em>Why Me</a></li>
+          <li><a href="#work"         class="dnav-link"><em>05</em>Work</a></li>
+          <li><a href="#testimonials" class="dnav-link"><em>06</em>Testimonials</a></li>
+          <li><a href="#contact"      class="dnav-link"><em>07</em>Contact</a></li>
         </ul>
-        <div class="nav-panel__footer">
-          <a href="#contact" class="btn-primary nav-cta">Start a Project <i class="bi bi-arrow-up-right"></i></a>
-          <div class="nav-socials">
-            <a href="#" aria-label="LinkedIn"  class="social-icon"><i class="bi bi-linkedin"></i></a>
-            <a href="#" aria-label="Dribbble"  class="social-icon"><i class="bi bi-dribbble"></i></a>
-            <a href="#" aria-label="Behance"   class="social-icon"><i class="bi bi-behance"></i></a>
-            <a href="#" aria-label="Twitter/X" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+
+        <div class="drawer-footer">
+          <a href="#contact" class="btn-pill drawer-cta">
+            Hire Me <i class="bi bi-arrow-up-right"></i>
+          </a>
+          <div class="drawer-socials">
+            <a href="#" aria-label="LinkedIn"   class="soc"><i class="bi bi-linkedin"></i></a>
+            <a href="#" aria-label="GitHub"     class="soc"><i class="bi bi-github"></i></a>
+            <a href="#" aria-label="Dribbble"   class="soc"><i class="bi bi-dribbble"></i></a>
+            <a href="#" aria-label="Twitter/X"  class="soc"><i class="bi bi-twitter-x"></i></a>
           </div>
         </div>
       </div>
     </nav>
   </div>
 
-  <main id="main">
+  <main>
 
-    <!-- HERO -->
-    <section class="hero-section" id="hero" aria-label="Hero">
-      <div class="orb orb--1" aria-hidden="true"></div>
-      <div class="orb orb--2" aria-hidden="true"></div>
-      <div class="orb orb--3" aria-hidden="true"></div>
-      <div class="hero-noise"  aria-hidden="true"></div>
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+         HERO
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section id="hero" class="hero" aria-label="Introduction">
+      <!-- Ambient blobs -->
+      <div class="blob blob--a" aria-hidden="true"></div>
+      <div class="blob blob--b" aria-hidden="true"></div>
+      <div class="blob blob--c" aria-hidden="true"></div>
+      <!-- Grain overlay -->
+      <div class="grain" aria-hidden="true"></div>
 
-      <div class="container-xl position-relative">
-        <div class="hero-content">
-          <div class="hero-eyebrow" data-hero="eyebrow">
-            <span class="eyebrow-dot" aria-hidden="true"></span>
-            Available for projects in 2025
+      <div class="container-xl hero-grid">
+        <!-- Left copy -->
+        <div class="hero-copy">
+          <div class="hero-eyebrow" data-h="eyebrow">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Open to new opportunities · 2025
           </div>
 
           <h1 class="hero-title">
-            <span class="hero-title__line" data-hero="line">Crafting</span>
-            <span class="hero-title__line hero-title__line--accent" data-hero="line"><em>Brand Stories</em></span>
-            <span class="hero-title__line" data-hero="line">That Convert</span>
+            <span data-h="line">Shaping Products</span>
+            <span data-h="line" class="gradient-text"><em>People Love</em></span>
+            <span data-h="line">to Use</span>
           </h1>
 
-          <p class="hero-subtitle" data-hero="subtitle">
-            Multidisciplinary Creative Director with 12+ years helping ambitious brands
-            find their voice — and turn it into measurable growth.
+          <p class="hero-sub" data-h="sub">
+            I'm Alex — a senior product strategist with 10+ years turning
+            ambiguous problems into clear, delightful, and measurable experiences.
           </p>
 
-          <div class="hero-ctas" data-hero="ctas">
-            <a href="#work"    class="btn-primary"><span>View My Work</span> <i class="bi bi-arrow-right"></i></a>
-            <a href="#contact" class="btn-outline"><span>Let's Talk</span></a>
+          <div class="hero-btns" data-h="btns">
+            <a href="#work"    class="btn-pill">See My Work <i class="bi bi-arrow-right"></i></a>
+            <a href="#contact" class="btn-ghost">Let's Talk</a>
           </div>
 
-          <div class="hero-stats" data-hero="stats">
-            <div class="hero-stat">
-              <span class="stat-num" data-count="200">0</span><span class="stat-suffix">+</span>
-              <span class="stat-label">Projects Delivered</span>
+          <div class="hero-kpis" data-h="kpis">
+            <div class="kpi">
+              <b class="kpi-val" data-count="150">0</b><sup>+</sup>
+              <span>Products shipped</span>
             </div>
-            <div class="hero-stat-divider" aria-hidden="true"></div>
-            <div class="hero-stat">
-              <span class="stat-num" data-count="48">0</span><span class="stat-suffix">M</span>
-              <span class="stat-label">Revenue Influenced</span>
+            <div class="kpi-sep" aria-hidden="true"></div>
+            <div class="kpi">
+              <b class="kpi-val" data-count="32">0</b><sup>M</sup>
+              <span>Users impacted</span>
             </div>
-            <div class="hero-stat-divider" aria-hidden="true"></div>
-            <div class="hero-stat">
-              <span class="stat-num" data-count="12">0</span><span class="stat-suffix">yr</span>
-              <span class="stat-label">Experience</span>
+            <div class="kpi-sep" aria-hidden="true"></div>
+            <div class="kpi">
+              <b class="kpi-val" data-count="10">0</b><sup>yr</sup>
+              <span>Experience</span>
             </div>
           </div>
         </div>
 
-        <div class="hero-badge" aria-hidden="true">
-          <svg viewBox="0 0 140 140" width="140" height="140" class="badge-svg">
-            <defs>
-              <path id="badgeCircle" d="M70,70 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/>
-            </defs>
-            <text class="badge-text">
-              <textPath href="#badgeCircle">Creative Director · Brand Architect · Visual Strategist ·&nbsp;</textPath>
-            </text>
-          </svg>
-          <div class="badge-star"><i class="bi bi-star-fill"></i></div>
+        <!-- Right visual -->
+        <div class="hero-visual" data-h="visual" aria-hidden="true">
+          <div class="hv-ring hv-ring--outer"></div>
+          <div class="hv-ring hv-ring--mid"></div>
+          <div class="hv-avatar">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=480&q=80"
+                 alt="" role="presentation" />
+          </div>
+          <!-- Floating chips -->
+          <div class="hv-chip hv-chip--1 glass-card">
+            <i class="bi bi-patch-check-fill"></i>
+            <span>Top 5% Strategist</span>
+          </div>
+          <div class="hv-chip hv-chip--2 glass-card">
+            <i class="bi bi-award-fill"></i>
+            <span>15 Industry Awards</span>
+          </div>
+
+          <!-- Rotating badge -->
+          <div class="hv-badge">
+            <svg viewBox="0 0 120 120" width="120" height="120">
+              <defs>
+                <path id="bc" d="M60,60 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0"/>
+              </defs>
+              <text>
+                <textPath href="#bc" class="badge-text">
+                  Product · Strategy · UX Design · Innovation ·&nbsp;
+                </textPath>
+              </text>
+            </svg>
+            <div class="hv-badge-center"><i class="bi bi-star-fill"></i></div>
+          </div>
         </div>
       </div>
 
-      <div class="scroll-hint" aria-hidden="true">
-        <div class="scroll-hint__line"></div>
-        <span class="scroll-hint__text">Scroll</span>
+      <!-- Scroll cue -->
+      <div class="scroll-cue" aria-hidden="true">
+        <div class="sc-line"></div>
+        <span>Scroll</span>
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="about-section section-pad" id="about" aria-label="About">
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+         ABOUT
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section id="about" class="section-pad about-sec" aria-label="About">
       <div class="container-xl">
         <div class="row align-items-center g-5">
 
+          <!-- Image column -->
           <div class="col-lg-5" data-reveal="left">
-            <div class="about-visual">
-              <div class="about-img-wrap">
-                <div class="about-img-bg" aria-hidden="true"></div>
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
-                     alt="Jordan Ellis — Creative Director" class="about-img" loading="lazy" width="480" height="560" />
-              </div>
-              <div class="about-float-card glass-card">
-                <div class="float-card__icon"><i class="bi bi-patch-check-fill"></i></div>
+            <div class="about-img-wrap">
+              <div class="about-img-halo" aria-hidden="true"></div>
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80"
+                   alt="Alex Morgan, Product Strategist"
+                   class="about-img" width="480" height="540" loading="lazy" />
+
+              <div class="glass-card about-badge-card">
+                <div class="abc-icon"><i class="bi bi-briefcase-fill"></i></div>
                 <div>
-                  <p class="float-card__num">Top 1%</p>
-                  <p class="float-card__label">Creative Directors</p>
+                  <p class="abc-val">10+ Years</p>
+                  <p class="abc-lbl">Industry Expertise</p>
                 </div>
               </div>
-              <div class="about-award glass-card">
-                <i class="bi bi-trophy-fill award-icon"></i>
-                <span>Awwwards SOTD × 14</span>
+
+              <div class="glass-card about-tag-card">
+                <i class="bi bi-graph-up-arrow" style="color:var(--accent)"></i>
+                <span>240% avg. growth</span>
               </div>
             </div>
           </div>
 
+          <!-- Copy column -->
           <div class="col-lg-7" data-reveal="right">
-            <div class="section-label">About Me</div>
-            <h2 class="section-title">I Design Systems That<br><em>Outlive Trends</em></h2>
-            <p class="section-body">
-              Hi — I'm Jordan, a multidisciplinary creative director based in New York City.
-              I specialize in brand identity, digital experience design, and strategic visual
-              communication for startups, scale-ups, and global enterprises alike.
+            <p class="sec-label">About Me</p>
+            <h2 class="sec-title">Building Products That<br><em>Drive Real Results</em></h2>
+            <p class="sec-body">
+              I'm a product strategist and UX leader based in San Francisco. My expertise spans
+              discovery, product definition, cross-functional leadership, and go-to-market strategy
+              — bridging the gap between user needs and business outcomes.
             </p>
-            <p class="section-body mt-3">
-              My process blends rigorous research with intuitive craft — uncovering the
-              essence of a brand and translating it into cohesive, memorable systems that
-              perform across every channel and touchpoint.
+            <p class="sec-body mt-3">
+              I've led teams at hypergrowth startups and Fortune 500s alike, bringing the same
+              rigour, curiosity, and craft to every engagement — from 0→1 launches to complex
+              platform redesigns affecting millions of users.
             </p>
-            <div class="about-skills">
-              <span class="skill-pill">Brand Strategy</span>
-              <span class="skill-pill">Visual Identity</span>
-              <span class="skill-pill">UX / UI Design</span>
-              <span class="skill-pill">Motion Design</span>
-              <span class="skill-pill">Design Systems</span>
-              <span class="skill-pill">Art Direction</span>
+
+            <div class="skill-tags">
+              <span class="stag">Product Strategy</span>
+              <span class="stag">UX Research</span>
+              <span class="stag">Design Thinking</span>
+              <span class="stag">Agile / Scrum</span>
+              <span class="stag">Data Analytics</span>
+              <span class="stag">Cross-Functional Leadership</span>
+              <span class="stag">Go-to-Market</span>
             </div>
-            <div class="about-cta-row">
-              <a href="#contact" class="btn-primary">Work With Me <i class="bi bi-arrow-right"></i></a>
-              <a href="#" class="about-cv-link"><i class="bi bi-download"></i> Download CV</a>
+
+            <div class="about-actions">
+              <a href="#contact" class="btn-pill">Work With Me <i class="bi bi-arrow-right"></i></a>
+              <a href="#" class="cv-link"><i class="bi bi-file-earmark-pdf"></i> Download CV</a>
             </div>
           </div>
 
@@ -217,131 +262,136 @@
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="services-section section-pad" id="services" aria-label="Services">
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+         SERVICES
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section id="services" class="section-pad services-sec" aria-label="Services">
       <div class="container-xl">
-        <div class="section-header text-center" data-reveal="up">
-          <div class="section-label">What I Do</div>
-          <h2 class="section-title">Services Built for<br><em>Ambitious Brands</em></h2>
-          <p class="section-subtitle">End-to-end creative and strategic solutions that move the needle from first impression to lasting loyalty.</p>
+        <div class="sec-header text-center" data-reveal="up">
+          <p class="sec-label">What I Offer</p>
+          <h2 class="sec-title">Services for <em>Forward-Thinking</em> Teams</h2>
+          <p class="sec-sub">End-to-end product and strategy services that help ambitious organisations move from insight to impact.</p>
         </div>
 
         <div class="services-grid">
 
-          <article class="glass-card service-card" data-reveal="up" data-delay="0">
-            <div class="service-icon" aria-hidden="true"><i class="bi bi-layers-fill"></i></div>
-            <h3 class="service-title">Brand Identity</h3>
-            <p class="service-desc">Complete brand architecture — logo systems, color palettes, typography, and usage guidelines that give your brand a clear, ownable voice.</p>
-            <a href="#contact" class="service-cta">Get Started <i class="bi bi-arrow-right"></i></a>
+          <article class="glass-card svc-card" data-reveal="up" data-delay="0">
+            <div class="svc-icon"><i class="bi bi-compass-fill"></i></div>
+            <h3>Product Strategy</h3>
+            <p>Vision setting, roadmap definition, and prioritisation frameworks that align teams and accelerate delivery.</p>
+            <a href="#contact" class="svc-link">Get started <i class="bi bi-arrow-right"></i></a>
           </article>
 
-          <article class="glass-card service-card service-card--featured" data-reveal="up" data-delay="80">
-            <div class="service-badge-tag">Most Popular</div>
-            <div class="service-icon" aria-hidden="true"><i class="bi bi-phone-fill"></i></div>
-            <h3 class="service-title">Digital Experience</h3>
-            <p class="service-desc">Intuitive, conversion-focused websites and apps that balance aesthetic beauty with rock-solid UX principles and performance.</p>
-            <a href="#contact" class="service-cta">Get Started <i class="bi bi-arrow-right"></i></a>
+          <article class="glass-card svc-card svc-card--featured" data-reveal="up" data-delay="80">
+            <span class="svc-badge">Most Popular</span>
+            <div class="svc-icon"><i class="bi bi-layout-wtf"></i></div>
+            <h3>UX & Product Design</h3>
+            <p>Research-backed design — from user interviews and journey mapping to high-fidelity prototypes and design systems.</p>
+            <a href="#contact" class="svc-link">Get started <i class="bi bi-arrow-right"></i></a>
           </article>
 
-          <article class="glass-card service-card" data-reveal="up" data-delay="160">
-            <div class="service-icon" aria-hidden="true"><i class="bi bi-graph-up-arrow"></i></div>
-            <h3 class="service-title">Brand Strategy</h3>
-            <p class="service-desc">Research-backed positioning, competitive audits, and messaging frameworks that align your team and speak directly to your audience.</p>
-            <a href="#contact" class="service-cta">Get Started <i class="bi bi-arrow-right"></i></a>
+          <article class="glass-card svc-card" data-reveal="up" data-delay="160">
+            <div class="svc-icon"><i class="bi bi-bar-chart-line-fill"></i></div>
+            <h3>Growth & Analytics</h3>
+            <p>Funnel analysis, experimentation programmes, and data-driven growth loops that deliver sustainable results.</p>
+            <a href="#contact" class="svc-link">Get started <i class="bi bi-arrow-right"></i></a>
           </article>
 
-          <article class="glass-card service-card" data-reveal="up" data-delay="0">
-            <div class="service-icon" aria-hidden="true"><i class="bi bi-camera-video-fill"></i></div>
-            <h3 class="service-title">Motion & Video</h3>
-            <p class="service-desc">Animated brand expressions, social content, product demos, and narrative-driven video that captures attention in milliseconds.</p>
-            <a href="#contact" class="service-cta">Get Started <i class="bi bi-arrow-right"></i></a>
+          <article class="glass-card svc-card" data-reveal="up" data-delay="0">
+            <div class="svc-icon"><i class="bi bi-people-fill"></i></div>
+            <h3>Team Leadership</h3>
+            <p>Building and coaching high-performing product teams, establishing processes and culture that scale with your organisation.</p>
+            <a href="#contact" class="svc-link">Get started <i class="bi bi-arrow-right"></i></a>
           </article>
 
-          <article class="glass-card service-card" data-reveal="up" data-delay="80">
-            <div class="service-icon" aria-hidden="true"><i class="bi bi-grid-3x3-gap-fill"></i></div>
-            <h3 class="service-title">Design Systems</h3>
-            <p class="service-desc">Scalable component libraries and token-based systems that keep product teams shipping consistently at speed — no drift, no chaos.</p>
-            <a href="#contact" class="service-cta">Get Started <i class="bi bi-arrow-right"></i></a>
+          <article class="glass-card svc-card" data-reveal="up" data-delay="80">
+            <div class="svc-icon"><i class="bi bi-rocket-takeoff-fill"></i></div>
+            <h3>Go-to-Market</h3>
+            <p>Positioning, launch planning, and cross-functional co-ordination to ensure your product enters the market with impact.</p>
+            <a href="#contact" class="svc-link">Get started <i class="bi bi-arrow-right"></i></a>
           </article>
 
-          <article class="glass-card service-card" data-reveal="up" data-delay="160">
-            <div class="service-icon" aria-hidden="true"><i class="bi bi-megaphone-fill"></i></div>
-            <h3 class="service-title">Campaign Creative</h3>
-            <p class="service-desc">Full-funnel campaign art direction — from hero visuals and OOH to paid social, email, and landing pages that convert.</p>
-            <a href="#contact" class="service-cta">Get Started <i class="bi bi-arrow-right"></i></a>
+          <article class="glass-card svc-card" data-reveal="up" data-delay="160">
+            <div class="svc-icon"><i class="bi bi-clipboard2-data-fill"></i></div>
+            <h3>Product Audits</h3>
+            <p>Comprehensive reviews of your existing product experience, surfacing quick wins and strategic opportunities.</p>
+            <a href="#contact" class="svc-link">Get started <i class="bi bi-arrow-right"></i></a>
           </article>
 
         </div>
       </div>
     </section>
 
-    <!-- WHY US -->
-    <section class="why-section section-pad" id="why-us" aria-label="Why choose me">
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+         WHY CHOOSE ME
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section id="why" class="section-pad why-sec" aria-label="Why choose me">
       <div class="container-xl">
-        <div class="row g-5 align-items-center">
+        <div class="row align-items-center g-5">
 
-          <div class="col-lg-5" data-reveal="left">
-            <div class="section-label">Why Choose Me</div>
-            <h2 class="section-title">A Partner, Not<br>Just a <em>Vendor</em></h2>
-            <p class="section-body">Beyond executional excellence, I bring strategic thinking, proactive communication, and a genuine investment in your success to every engagement.</p>
-            <div class="why-pillars">
-              <div class="why-pillar">
-                <div class="pillar-num">01</div>
-                <div class="pillar-content">
-                  <h4 class="pillar-title">Strategy-First Approach</h4>
-                  <p class="pillar-body">Every design decision is grounded in audience insight and business objectives — never aesthetic whim.</p>
+          <div class="col-lg-6" data-reveal="left">
+            <p class="sec-label">Why Work With Me</p>
+            <h2 class="sec-title">A Strategist Who<br>Also <em>Ships</em></h2>
+            <p class="sec-body">I don't just produce decks — I stay in the room until the product is live and the metrics move. Here's what that looks like in practice.</p>
+
+            <ul class="why-list">
+              <li data-reveal="up" data-delay="0">
+                <div class="wl-num">01</div>
+                <div>
+                  <h4>Outcome-Obsessed</h4>
+                  <p>Every decision traces back to a measurable business or user outcome — not activity or aesthetics.</p>
                 </div>
-              </div>
-              <div class="why-pillar">
-                <div class="pillar-num">02</div>
-                <div class="pillar-content">
-                  <h4 class="pillar-title">Radical Transparency</h4>
-                  <p class="pillar-body">Clear timelines, honest communication, and zero surprise invoices. You always know where things stand.</p>
+              </li>
+              <li data-reveal="up" data-delay="80">
+                <div class="wl-num">02</div>
+                <div>
+                  <h4>Clear Communication</h4>
+                  <p>I write clearly, listen actively, and translate between technical, design, and business stakeholders with ease.</p>
                 </div>
-              </div>
-              <div class="why-pillar">
-                <div class="pillar-num">03</div>
-                <div class="pillar-content">
-                  <h4 class="pillar-title">Measurable Impact</h4>
-                  <p class="pillar-body">I track what moves the needle. My clients average a 3.4× ROI lift within 6 months of brand launch.</p>
+              </li>
+              <li data-reveal="up" data-delay="160">
+                <div class="wl-num">03</div>
+                <div>
+                  <h4>Speed Without Shortcuts</h4>
+                  <p>Rapid iteration through disciplined process — I know which corners to cut and which never to.</p>
                 </div>
-              </div>
-              <div class="why-pillar">
-                <div class="pillar-num">04</div>
-                <div class="pillar-content">
-                  <h4 class="pillar-title">Post-Launch Support</h4>
-                  <p class="pillar-body">The relationship doesn't end at handoff. I stay engaged to iterate, optimise, and evolve with you.</p>
+              </li>
+              <li data-reveal="up" data-delay="240">
+                <div class="wl-num">04</div>
+                <div>
+                  <h4>Long-Term Partnership</h4>
+                  <p>I stay engaged post-launch, tracking results and iterating until the impact is real and sustained.</p>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
 
-          <div class="col-lg-7" data-reveal="right">
-            <div class="why-cards-stack">
-              <div class="glass-card why-card why-card--back"  aria-hidden="true"></div>
-              <div class="glass-card why-card why-card--mid"   aria-hidden="true"></div>
-              <div class="glass-card why-card why-card--front">
-                <div class="why-card__header">
-                  <div class="wc-icon"><i class="bi bi-bar-chart-fill"></i></div>
-                  <span class="wc-badge">Average Client Result</span>
+          <div class="col-lg-6" data-reveal="right">
+            <div class="why-card-stack">
+              <div class="glass-card wcs-back"  aria-hidden="true"></div>
+              <div class="glass-card wcs-mid"   aria-hidden="true"></div>
+              <div class="glass-card wcs-front">
+                <div class="wcf-header">
+                  <div class="wcf-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                  <span class="wcf-tag">Average client result</span>
                 </div>
-                <div class="why-card__metric">
-                  <span class="metric-num">3.4<span class="metric-x">×</span></span>
-                  <span class="metric-label">ROI Lift</span>
+                <div class="wcf-metric">
+                  <span class="wcf-num">2.8<span class="wcf-x">×</span></span>
+                  <span class="wcf-lbl">Revenue Growth</span>
                 </div>
-                <div class="why-card__bars">
-                  <div class="bar-row">
-                    <span class="bar-name">Before</span>
-                    <div class="bar-track"><div class="bar-fill bar-fill--before" style="--w:32%"></div></div>
-                    <span class="bar-val">32%</span>
+                <div class="wcf-bars">
+                  <div class="wbar">
+                    <span>Before</span>
+                    <div class="wbar-track"><div class="wbar-fill wbar-fill--before" style="--w:28%"></div></div>
+                    <b>28%</b>
                   </div>
-                  <div class="bar-row">
-                    <span class="bar-name">After</span>
-                    <div class="bar-track"><div class="bar-fill bar-fill--after" style="--w:87%"></div></div>
-                    <span class="bar-val">87%</span>
+                  <div class="wbar">
+                    <span>After</span>
+                    <div class="wbar-track"><div class="wbar-fill wbar-fill--after" style="--w:78%"></div></div>
+                    <b>78%</b>
                   </div>
                 </div>
-                <p class="why-card__note">Based on 50+ brand transformation projects, 2019–2024.</p>
+                <p class="wcf-note">Based on 40+ client engagements, 2018–2024.</p>
               </div>
             </div>
           </div>
@@ -350,112 +400,122 @@
       </div>
     </section>
 
-    <!-- FEATURED WORK -->
-    <section class="work-section section-pad" id="work" aria-label="Featured Work">
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+         FEATURED WORK
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section id="work" class="section-pad work-sec" aria-label="Featured work">
       <div class="container-xl">
-        <div class="section-header text-center" data-reveal="up">
-          <div class="section-label">Portfolio</div>
-          <h2 class="section-title">Featured <em>Work</em></h2>
-          <p class="section-subtitle">A curated selection of projects across brand, strategy, and digital.</p>
+        <div class="sec-header text-center" data-reveal="up">
+          <p class="sec-label">Portfolio</p>
+          <h2 class="sec-title">Selected <em>Work</em></h2>
+          <p class="sec-sub">A curated set of case studies across strategy, design, and growth.</p>
         </div>
 
-        <div class="work-filters" role="group" aria-label="Filter work" data-reveal="up">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="brand">Brand</button>
-          <button class="filter-btn" data-filter="strategy">Strategy</button>
-          <button class="filter-btn" data-filter="digital">Digital</button>
-          <button class="filter-btn" data-filter="motion">Motion</button>
+        <!-- Filters -->
+        <div class="work-filters" role="group" aria-label="Filter projects" data-reveal="up">
+          <button class="wf-btn active" data-filter="all">All</button>
+          <button class="wf-btn" data-filter="strategy">Strategy</button>
+          <button class="wf-btn" data-filter="ux">UX Design</button>
+          <button class="wf-btn" data-filter="growth">Growth</button>
+          <button class="wf-btn" data-filter="launch">Launch</button>
         </div>
 
+        <!-- Grid -->
         <div class="work-grid" id="workGrid">
 
-          <article class="work-card work-card--wide" data-category="brand" data-reveal="up">
-            <div class="work-card__img-wrap">
-              <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&q=80" alt="Luminary Brand System" class="work-img" loading="lazy" />
-              <div class="work-card__overlay">
-                <span class="work-tag">Brand · Strategy</span>
-                <a href="#" class="work-view-btn" aria-label="View Luminary project"><i class="bi bi-arrow-up-right"></i></a>
+          <article class="work-card work-card--wide" data-cat="strategy" data-reveal="up">
+            <div class="wc-img-wrap">
+              <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80"
+                   alt="Orbit — Platform Rebuild" class="wc-img" loading="lazy" />
+              <div class="wc-overlay">
+                <span class="wc-tag">Strategy · UX</span>
+                <a href="#" class="wc-arrow" aria-label="View Orbit project"><i class="bi bi-arrow-up-right"></i></a>
               </div>
             </div>
-            <div class="work-card__body">
-              <p class="work-category">Brand · Strategy</p>
-              <h3 class="work-title">Luminary — Full Brand System</h3>
-              <p class="work-desc">Complete visual identity for a wellness SaaS — from logo system to full UI kit.</p>
+            <div class="wc-body">
+              <p class="wc-cat">Strategy · UX Design</p>
+              <h3>Orbit — Enterprise Platform Rebuild</h3>
+              <p>Led a 14-month 0→1 rebuild of a $120M SaaS platform, reducing churn by 38%.</p>
             </div>
           </article>
 
-          <article class="work-card" data-category="digital" data-reveal="up">
-            <div class="work-card__img-wrap">
-              <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?w=600&q=80" alt="Nexus App Redesign" class="work-img" loading="lazy" />
-              <div class="work-card__overlay">
-                <span class="work-tag">Digital</span>
-                <a href="#" class="work-view-btn" aria-label="View Nexus project"><i class="bi bi-arrow-up-right"></i></a>
+          <article class="work-card" data-cat="ux" data-reveal="up">
+            <div class="wc-img-wrap">
+              <img src="https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=600&q=80"
+                   alt="Bloom Mobile App" class="wc-img" loading="lazy" />
+              <div class="wc-overlay">
+                <span class="wc-tag">UX Design</span>
+                <a href="#" class="wc-arrow" aria-label="View Bloom project"><i class="bi bi-arrow-up-right"></i></a>
               </div>
             </div>
-            <div class="work-card__body">
-              <p class="work-category">Digital · UX</p>
-              <h3 class="work-title">Nexus App Redesign</h3>
-              <p class="work-desc">Product redesign that increased activation rates by 62%.</p>
+            <div class="wc-body">
+              <p class="wc-cat">UX Design · Mobile</p>
+              <h3>Bloom Health App</h3>
+              <p>Consumer wellness app reaching 1.2M downloads in 6 months.</p>
             </div>
           </article>
 
-          <article class="work-card" data-category="motion" data-reveal="up">
-            <div class="work-card__img-wrap">
-              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Saffron Motion Campaign" class="work-img" loading="lazy" />
-              <div class="work-card__overlay">
-                <span class="work-tag">Motion</span>
-                <a href="#" class="work-view-btn" aria-label="View Saffron project"><i class="bi bi-arrow-up-right"></i></a>
+          <article class="work-card" data-cat="growth" data-reveal="up">
+            <div class="wc-img-wrap">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80"
+                   alt="Apex Growth Programme" class="wc-img" loading="lazy" />
+              <div class="wc-overlay">
+                <span class="wc-tag">Growth</span>
+                <a href="#" class="wc-arrow" aria-label="View Apex project"><i class="bi bi-arrow-up-right"></i></a>
               </div>
             </div>
-            <div class="work-card__body">
-              <p class="work-category">Motion · Campaign</p>
-              <h3 class="work-title">Saffron Motion Campaign</h3>
-              <p class="work-desc">Animated brand launch series across social and OOH channels.</p>
+            <div class="wc-body">
+              <p class="wc-cat">Growth · Analytics</p>
+              <h3>Apex Growth Programme</h3>
+              <p>Experimentation system driving 210% improvement in activation rate.</p>
             </div>
           </article>
 
-          <article class="work-card" data-category="strategy" data-reveal="up">
-            <div class="work-card__img-wrap">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Meridian Strategy" class="work-img" loading="lazy" />
-              <div class="work-card__overlay">
-                <span class="work-tag">Strategy</span>
-                <a href="#" class="work-view-btn" aria-label="View Meridian project"><i class="bi bi-arrow-up-right"></i></a>
+          <article class="work-card" data-cat="launch" data-reveal="up">
+            <div class="wc-img-wrap">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80"
+                   alt="Nova Launch" class="wc-img" loading="lazy" />
+              <div class="wc-overlay">
+                <span class="wc-tag">Launch</span>
+                <a href="#" class="wc-arrow" aria-label="View Nova project"><i class="bi bi-arrow-up-right"></i></a>
               </div>
             </div>
-            <div class="work-card__body">
-              <p class="work-category">Strategy · Positioning</p>
-              <h3 class="work-title">Meridian Strategy Overhaul</h3>
-              <p class="work-desc">Repositioning a fintech brand for Series B growth.</p>
+            <div class="wc-body">
+              <p class="wc-cat">Go-to-Market · Launch</p>
+              <h3>Nova — B2B SaaS Launch</h3>
+              <p>Full GTM strategy and launch execution reaching $2M ARR in year one.</p>
             </div>
           </article>
 
-          <article class="work-card" data-category="brand" data-reveal="up">
-            <div class="work-card__img-wrap">
-              <img src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=600&q=80" alt="Forté Packaging" class="work-img" loading="lazy" />
-              <div class="work-card__overlay">
-                <span class="work-tag">Brand</span>
-                <a href="#" class="work-view-btn" aria-label="View Forté project"><i class="bi bi-arrow-up-right"></i></a>
+          <article class="work-card" data-cat="ux" data-reveal="up">
+            <div class="wc-img-wrap">
+              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80"
+                   alt="Crest Design System" class="wc-img" loading="lazy" />
+              <div class="wc-overlay">
+                <span class="wc-tag">UX Design</span>
+                <a href="#" class="wc-arrow" aria-label="View Crest project"><i class="bi bi-arrow-up-right"></i></a>
               </div>
             </div>
-            <div class="work-card__body">
-              <p class="work-category">Brand · Packaging</p>
-              <h3 class="work-title">Forté Packaging & Identity</h3>
-              <p class="work-desc">Premium CPG brand identity and retail packaging system.</p>
+            <div class="wc-body">
+              <p class="wc-cat">Design System · UX</p>
+              <h3>Crest Design System</h3>
+              <p>Component library adopted by 6 product teams, cutting delivery time by 45%.</p>
             </div>
           </article>
 
-          <article class="work-card" data-category="digital" data-reveal="up">
-            <div class="work-card__img-wrap">
-              <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80" alt="Vela E-Commerce" class="work-img" loading="lazy" />
-              <div class="work-card__overlay">
-                <span class="work-tag">Digital</span>
-                <a href="#" class="work-view-btn" aria-label="View Vela project"><i class="bi bi-arrow-up-right"></i></a>
+          <article class="work-card" data-cat="strategy" data-reveal="up">
+            <div class="wc-img-wrap">
+              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80"
+                   alt="Meridian Pivot" class="wc-img" loading="lazy" />
+              <div class="wc-overlay">
+                <span class="wc-tag">Strategy</span>
+                <a href="#" class="wc-arrow" aria-label="View Meridian project"><i class="bi bi-arrow-up-right"></i></a>
               </div>
             </div>
-            <div class="work-card__body">
-              <p class="work-category">Digital · E-Commerce</p>
-              <h3 class="work-title">Vela E-Commerce Experience</h3>
-              <p class="work-desc">Luxury fashion store with a 41% checkout completion uplift.</p>
+            <div class="wc-body">
+              <p class="wc-cat">Strategy · Pivot</p>
+              <h3>Meridian Strategic Pivot</h3>
+              <p>Repositioning a Series B fintech for enterprise — 3× increase in deal size.</p>
             </div>
           </article>
 
@@ -463,69 +523,79 @@
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="testimonials-section section-pad" id="testimonials" aria-label="Client Testimonials">
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+         TESTIMONIALS
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section id="testimonials" class="section-pad testi-sec" aria-label="Testimonials">
       <div class="container-xl">
-        <div class="section-header text-center" data-reveal="up">
-          <div class="section-label">Social Proof</div>
-          <h2 class="section-title">Words from<br><em>Happy Clients</em></h2>
+        <div class="sec-header text-center" data-reveal="up">
+          <p class="sec-label">Social Proof</p>
+          <h2 class="sec-title">What Clients <em>Say</em></h2>
         </div>
 
-        <div class="testimonials-carousel" data-reveal="up">
+        <div class="testi-carousel" data-reveal="up">
           <div class="testi-track" id="testiTrack" role="list">
 
             <article class="glass-card testi-card" role="listitem">
-              <div class="testi-stars" aria-label="5 out of 5 stars">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              <div class="tc-stars" aria-label="5 stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
               </div>
-              <blockquote class="testi-quote">"Jordan completely transformed how we present ourselves to the world. The new brand identity tripled our inbound inquiry rate within 90 days. Absolutely phenomenal work."</blockquote>
-              <div class="testi-author">
-                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sophia Reeves" class="testi-avatar" loading="lazy" width="48" height="48" />
+              <blockquote>"Alex transformed how we think about product. The strategic clarity they brought in the first month unlocked six months of paralysed roadmap. An absolute game-changer."</blockquote>
+              <div class="tc-author">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Sharma" width="48" height="48" loading="lazy" />
                 <div>
-                  <p class="testi-name">Sophia Reeves</p>
-                  <p class="testi-role">CEO, Luminary Health</p>
+                  <strong>Priya Sharma</strong>
+                  <span>CPO, Orbit Technologies</span>
                 </div>
               </div>
             </article>
 
             <article class="glass-card testi-card" role="listitem">
-              <div class="testi-stars" aria-label="5 out of 5 stars">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              <div class="tc-stars" aria-label="5 stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
               </div>
-              <blockquote class="testi-quote">"Rare to find someone who thinks as a strategist AND executes at world-class creative quality. Jordan's work on our Series B pitch deck helped us close a $24M round."</blockquote>
-              <div class="testi-author">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marcus Chen" class="testi-avatar" loading="lazy" width="48" height="48" />
+              <blockquote>"Working with Alex is like having a brilliant co-founder on call. They helped us ship Bloom in half the expected time without compromising on quality. Exceptional."</blockquote>
+              <div class="tc-author">
+                <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="James Whitfield" width="48" height="48" loading="lazy" />
                 <div>
-                  <p class="testi-name">Marcus Chen</p>
-                  <p class="testi-role">Founder, Meridian Fintech</p>
+                  <strong>James Whitfield</strong>
+                  <span>Founder & CEO, Bloom Health</span>
                 </div>
               </div>
             </article>
 
             <article class="glass-card testi-card" role="listitem">
-              <div class="testi-stars" aria-label="5 out of 5 stars">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              <div class="tc-stars" aria-label="5 stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
               </div>
-              <blockquote class="testi-quote">"Working with Jordan felt like having a CMO and creative director in one. Every deliverable arrived on time, exceeded expectations, and the whole team loved the new direction."</blockquote>
-              <div class="testi-author">
-                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Aisha Okafor" class="testi-avatar" loading="lazy" width="48" height="48" />
+              <blockquote>"Alex's growth programme was the most ROI-positive investment we made in three years. The experimentation culture they established lives on well beyond the engagement."</blockquote>
+              <div class="tc-author">
+                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Nina Bosch" width="48" height="48" loading="lazy" />
                 <div>
-                  <p class="testi-name">Aisha Okafor</p>
-                  <p class="testi-role">VP Marketing, Forté CPG</p>
+                  <strong>Nina Bosch</strong>
+                  <span>VP Growth, Apex Financial</span>
                 </div>
               </div>
             </article>
 
             <article class="glass-card testi-card" role="listitem">
-              <div class="testi-stars" aria-label="5 out of 5 stars">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              <div class="tc-stars" aria-label="5 stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
               </div>
-              <blockquote class="testi-quote">"The Vela redesign was our best business decision of the year. Jordan's user-centric approach and meticulous attention to detail translated directly to a 41% jump in conversions."</blockquote>
-              <div class="testi-author">
-                <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Luca Ferraro" class="testi-avatar" loading="lazy" width="48" height="48" />
+              <blockquote>"They navigated our enterprise complexity with remarkable composure, aligning 12 stakeholders on a product direction in two workshops. Truly skilled at what they do."</blockquote>
+              <div class="tc-author">
+                <img src="https://randomuser.me/api/portraits/men/77.jpg" alt="Marco Ruiz" width="48" height="48" loading="lazy" />
                 <div>
-                  <p class="testi-name">Luca Ferraro</p>
-                  <p class="testi-role">Co-founder, Vela Fashion</p>
+                  <strong>Marco Ruiz</strong>
+                  <span>Head of Product, Meridian Bank</span>
                 </div>
               </div>
             </article>
@@ -533,105 +603,117 @@
           </div>
 
           <div class="testi-controls">
-            <button class="testi-btn" id="testiPrev" aria-label="Previous testimonial"><i class="bi bi-arrow-left"></i></button>
-            <div class="testi-dots" id="testiDots" role="tablist" aria-label="Testimonial slides"></div>
-            <button class="testi-btn" id="testiNext" aria-label="Next testimonial"><i class="bi bi-arrow-right"></i></button>
+            <button id="tPrev" class="tc-btn" aria-label="Previous"><i class="bi bi-arrow-left"></i></button>
+            <div id="tDots" class="tc-dots" role="tablist"></div>
+            <button id="tNext" class="tc-btn" aria-label="Next"><i class="bi bi-arrow-right"></i></button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- STATS -->
-    <section class="stats-section section-pad" id="stats" aria-label="Statistics">
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+         STATS
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section id="stats" class="stats-sec" aria-label="Statistics">
       <div class="container-xl">
         <div class="stats-grid">
-          <div class="stat-block" data-reveal="up" data-delay="0">
-            <div class="stat-icon"><i class="bi bi-briefcase-fill"></i></div>
-            <div class="stat-num-wrap">
-              <span class="stat-counter" data-count="200">0</span><span class="stat-unit">+</span>
+
+          <div class="stat-item" data-reveal="up" data-delay="0">
+            <div class="si-icon"><i class="bi bi-box-seam-fill"></i></div>
+            <div class="si-num">
+              <span class="si-counter" data-count="150">0</span><sup>+</sup>
             </div>
-            <p class="stat-desc">Projects Completed</p>
+            <p>Products Shipped</p>
           </div>
-          <div class="stat-block" data-reveal="up" data-delay="100">
-            <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
-            <div class="stat-num-wrap">
-              <span class="stat-counter" data-count="84">0</span><span class="stat-unit">+</span>
+
+          <div class="stat-item" data-reveal="up" data-delay="100">
+            <div class="si-icon"><i class="bi bi-person-check-fill"></i></div>
+            <div class="si-num">
+              <span class="si-counter" data-count="68">0</span><sup>+</sup>
             </div>
-            <p class="stat-desc">Happy Clients</p>
+            <p>Clients Served</p>
           </div>
-          <div class="stat-block" data-reveal="up" data-delay="200">
-            <div class="stat-icon"><i class="bi bi-trophy-fill"></i></div>
-            <div class="stat-num-wrap">
-              <span class="stat-counter" data-count="27">0</span><span class="stat-unit">+</span>
+
+          <div class="stat-item" data-reveal="up" data-delay="200">
+            <div class="si-icon"><i class="bi bi-trophy-fill"></i></div>
+            <div class="si-num">
+              <span class="si-counter" data-count="15">0</span><sup>+</sup>
             </div>
-            <p class="stat-desc">Industry Awards</p>
+            <p>Industry Awards</p>
           </div>
-          <div class="stat-block" data-reveal="up" data-delay="300">
-            <div class="stat-icon"><i class="bi bi-star-fill"></i></div>
-            <div class="stat-num-wrap">
-              <span class="stat-counter" data-count="12">0</span><span class="stat-unit">yr</span>
+
+          <div class="stat-item" data-reveal="up" data-delay="300">
+            <div class="si-icon"><i class="bi bi-emoji-smile-fill"></i></div>
+            <div class="si-num">
+              <span class="si-counter" data-count="98">0</span><sup>%</sup>
             </div>
-            <p class="stat-desc">Years Experience</p>
+            <p>Client Satisfaction</p>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- CTA / CONTACT -->
-    <section class="cta-section section-pad" id="contact" aria-label="Contact">
-      <div class="cta-orb cta-orb--1" aria-hidden="true"></div>
-      <div class="cta-orb cta-orb--2" aria-hidden="true"></div>
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+         CTA / CONTACT
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section id="contact" class="section-pad cta-sec" aria-label="Contact">
+      <div class="cta-blob cta-blob--a" aria-hidden="true"></div>
+      <div class="cta-blob cta-blob--b" aria-hidden="true"></div>
       <div class="container-xl">
         <div class="row g-5 align-items-center">
 
           <div class="col-lg-6" data-reveal="left">
-            <div class="section-label cta-label">Let's Build Something</div>
-            <h2 class="section-title cta-title">Ready to Elevate<br>Your <em>Brand?</em></h2>
-            <p class="section-body cta-body">Whether you're launching something new, refreshing an existing identity, or need a strategic creative partner — I'd love to hear about it.</p>
-            <div class="cta-contact-details">
-              <a href="mailto:hello@jordanellis.co" class="cta-detail-link"><i class="bi bi-envelope-fill"></i> hello@jordanellis.co</a>
-              <a href="tel:+12125550192"             class="cta-detail-link"><i class="bi bi-telephone-fill"></i> +1 (212) 555-0192</a>
-              <div class="cta-detail-link"><i class="bi bi-geo-alt-fill"></i> New York City, NY</div>
+            <p class="sec-label">Let's Connect</p>
+            <h2 class="sec-title">Ready to Build<br>Something <em>Great?</em></h2>
+            <p class="sec-body">Whether you have a specific project in mind, want to explore a collaboration, or just want to say hello — my inbox is open.</p>
+
+            <div class="cta-contacts">
+              <a href="mailto:hello@alexmorgan.co" class="cta-contact-link">
+                <i class="bi bi-envelope-fill"></i> hello@alexmorgan.co
+              </a>
+              <a href="tel:+14155550147" class="cta-contact-link">
+                <i class="bi bi-telephone-fill"></i> +1 (415) 555-0147
+              </a>
+              <div class="cta-contact-link">
+                <i class="bi bi-geo-alt-fill"></i> San Francisco, CA
+              </div>
             </div>
           </div>
 
           <div class="col-lg-6" data-reveal="right">
-            <form class="contact-form glass-card" id="contactForm" novalidate>
-              <div class="form-row-2">
-                <div class="form-group">
-                  <label for="fname" class="form-label-custom">First Name</label>
-                  <input type="text" id="fname" name="fname" class="form-input" placeholder="Alex" required autocomplete="given-name" />
+            <form id="contactForm" class="contact-form glass-card" novalidate>
+              <div class="cf-row2">
+                <div class="cf-group">
+                  <label for="cfName">Full Name</label>
+                  <input type="text" id="cfName" name="name" placeholder="Jordan Smith" required autocomplete="name" />
                 </div>
-                <div class="form-group">
-                  <label for="lname" class="form-label-custom">Last Name</label>
-                  <input type="text" id="lname" name="lname" class="form-input" placeholder="Johnson" required autocomplete="family-name" />
+                <div class="cf-group">
+                  <label for="cfEmail">Email</label>
+                  <input type="email" id="cfEmail" name="email" placeholder="jordan@co.com" required autocomplete="email" />
                 </div>
               </div>
-              <div class="form-group">
-                <label for="email" class="form-label-custom">Email Address</label>
-                <input type="email" id="email" name="email" class="form-input" placeholder="alex@company.com" required autocomplete="email" />
-              </div>
-              <div class="form-group">
-                <label for="service" class="form-label-custom">Service Interested In</label>
-                <select id="service" name="service" class="form-input form-select-custom">
-                  <option value="" disabled selected>Select a service...</option>
-                  <option value="brand">Brand Identity</option>
-                  <option value="digital">Digital Experience</option>
-                  <option value="strategy">Brand Strategy</option>
-                  <option value="motion">Motion & Video</option>
-                  <option value="systems">Design Systems</option>
-                  <option value="campaign">Campaign Creative</option>
+              <div class="cf-group">
+                <label for="cfService">Interested In</label>
+                <select id="cfService" name="service">
+                  <option value="" disabled selected>Choose a service…</option>
+                  <option>Product Strategy</option>
+                  <option>UX & Product Design</option>
+                  <option>Growth & Analytics</option>
+                  <option>Team Leadership</option>
+                  <option>Go-to-Market</option>
+                  <option>Product Audit</option>
                 </select>
               </div>
-              <div class="form-group">
-                <label for="message" class="form-label-custom">Your Message</label>
-                <textarea id="message" name="message" class="form-input form-textarea" rows="4" placeholder="Tell me about your project..." required></textarea>
+              <div class="cf-group">
+                <label for="cfMsg">Message</label>
+                <textarea id="cfMsg" name="message" rows="4" placeholder="Tell me about your project…" required></textarea>
               </div>
-              <button type="submit" class="btn-primary form-submit" id="formSubmit">
-                <span class="submit-text">Send Message</span>
+              <button type="submit" class="btn-pill cf-submit" id="cfSubmit">
+                <span class="cf-submit-text">Send Message</span>
                 <i class="bi bi-send-fill"></i>
               </button>
-              <p class="form-privacy"><i class="bi bi-shield-check"></i> Your info is safe. No spam, ever.</p>
+              <p class="cf-note"><i class="bi bi-shield-check"></i> Your details are safe. No spam.</p>
             </form>
           </div>
 
@@ -641,75 +723,78 @@
 
   </main>
 
-  <!-- FOOTER -->
+  <!-- ░░ FOOTER ░░ -->
   <footer class="site-footer" role="contentinfo">
-    <div class="container-xl">
-      <div class="footer-grid">
+    <div class="container-xl footer-inner">
 
-        <div class="footer-brand">
-          <a href="#hero" class="nav-logo footer-logo"><span class="logo-mark">JE</span><span class="logo-text">Jordan Ellis</span></a>
-          <p class="footer-tagline">Crafting brand stories that convert — with strategy, craft, and intention.</p>
+      <div class="footer-grid">
+        <div class="fg-brand">
+          <a href="#hero" class="logo footer-logo">
+            <span class="logo-box">AM</span>
+            <span class="logo-name">Alex Morgan</span>
+          </a>
+          <p>Product strategist & UX leader helping teams ship products people love.</p>
           <div class="footer-socials">
-            <a href="#" aria-label="LinkedIn"   class="social-icon"><i class="bi bi-linkedin"></i></a>
-            <a href="#" aria-label="Dribbble"   class="social-icon"><i class="bi bi-dribbble"></i></a>
-            <a href="#" aria-label="Behance"    class="social-icon"><i class="bi bi-behance"></i></a>
-            <a href="#" aria-label="Twitter/X"  class="social-icon"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" aria-label="Instagram"  class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"  class="soc"><i class="bi bi-linkedin"></i></a>
+            <a href="#" aria-label="GitHub"    class="soc"><i class="bi bi-github"></i></a>
+            <a href="#" aria-label="Dribbble"  class="soc"><i class="bi bi-dribbble"></i></a>
+            <a href="#" aria-label="Twitter/X" class="soc"><i class="bi bi-twitter-x"></i></a>
           </div>
         </div>
 
-        <div class="footer-col">
-          <h4 class="footer-heading">Navigation</h4>
-          <ul class="footer-links">
-            <li><a href="#hero"         class="footer-link">Home</a></li>
-            <li><a href="#about"        class="footer-link">About</a></li>
-            <li><a href="#services"     class="footer-link">Services</a></li>
-            <li><a href="#work"         class="footer-link">Portfolio</a></li>
-            <li><a href="#contact"      class="footer-link">Contact</a></li>
+        <div class="fg-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
 
-        <div class="footer-col">
-          <h4 class="footer-heading">Services</h4>
-          <ul class="footer-links">
-            <li><a href="#services" class="footer-link">Brand Identity</a></li>
-            <li><a href="#services" class="footer-link">Digital Experience</a></li>
-            <li><a href="#services" class="footer-link">Brand Strategy</a></li>
-            <li><a href="#services" class="footer-link">Motion & Video</a></li>
-            <li><a href="#services" class="footer-link">Design Systems</a></li>
+        <div class="fg-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Product Strategy</a></li>
+            <li><a href="#services">UX Design</a></li>
+            <li><a href="#services">Growth</a></li>
+            <li><a href="#services">Go-to-Market</a></li>
+            <li><a href="#services">Product Audit</a></li>
           </ul>
         </div>
 
-        <div class="footer-col">
-          <h4 class="footer-heading">Get in Touch</h4>
-          <ul class="footer-links footer-contact-list">
-            <li><a href="mailto:hello@jordanellis.co" class="footer-link"><i class="bi bi-envelope-fill"></i> hello@jordanellis.co</a></li>
-            <li><a href="tel:+12125550192"            class="footer-link"><i class="bi bi-telephone-fill"></i> +1 (212) 555-0192</a></li>
-            <li class="footer-link"><i class="bi bi-geo-alt-fill"></i> New York City, NY</li>
+        <div class="fg-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@alexmorgan.co"><i class="bi bi-envelope-fill"></i> hello@alexmorgan.co</a></li>
+            <li><a href="tel:+14155550147"><i class="bi bi-telephone-fill"></i> +1 (415) 555-0147</a></li>
+            <li><span><i class="bi bi-geo-alt-fill"></i> San Francisco, CA</span></li>
           </ul>
-          <a href="#contact" class="btn-primary footer-cta">Start a Project <i class="bi bi-arrow-right"></i></a>
+          <a href="#contact" class="btn-pill footer-cta">Start a Project <i class="bi bi-arrow-right"></i></a>
         </div>
-
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2025 Jordan Ellis. All rights reserved.</p>
-        <div class="footer-legal">
-          <a href="#" class="footer-legal-link">Privacy Policy</a>
+        <p>&copy; 2025 Alex Morgan. All rights reserved.</p>
+        <div class="fb-links">
+          <a href="#">Privacy Policy</a>
           <span aria-hidden="true">·</span>
-          <a href="#" class="footer-legal-link">Terms of Use</a>
+          <a href="#">Terms</a>
         </div>
       </div>
+
     </div>
   </footer>
 
-  <!-- Back to top -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <!-- Back-to-top -->
+  <button id="backToTop" class="btt" aria-label="Back to top">
     <i class="bi bi-arrow-up"></i>
   </button>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <!-- Custom JS -->
   <script src="js/main.js" defer></script>
 </body>
 </html>
