@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Alex Morgan — Creative Strategist & Brand Consultant. Helping businesses craft compelling identities that resonate and convert." />
-  <meta name="keywords" content="brand consultant, creative strategist, portfolio, marketing, design" />
-  <meta name="author" content="Alex Morgan" />
-  <title>Alex Morgan | Creative Strategist & Brand Consultant</title>
+  <meta name="description" content="Jordan Ellis — Multidisciplinary Creative Director & Brand Architect. Transforming ideas into impactful visual narratives." />
+  <meta name="author" content="Jordan Ellis" />
+  <title>Jordan Ellis | Creative Director & Brand Architect</title>
 
-  <!-- Preconnect for performance -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet" />
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -25,24 +27,21 @@
 </head>
 <body>
 
-  <!-- ══════════════════════════════════════════
-       CUSTOM CURSOR
-  ══════════════════════════════════════════ -->
+  <!-- Custom Cursor -->
   <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
   <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
-  <!-- ══════════════════════════════════════════
-       NAVIGATION
-  ══════════════════════════════════════════ -->
-  <header class="site-header" id="siteHeader" role="banner">
-    <nav class="nav-container" aria-label="Main navigation">
-      <a href="#hero" class="nav-logo" aria-label="Alex Morgan home">
-        <span class="logo-mark">AM</span>
-        <span class="logo-text">Alex Morgan</span>
-      </a>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-      <div class="nav-actions">
-        <!-- Theme Toggle -->
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader" role="banner">
+    <div class="header-inner">
+      <a href="#hero" class="nav-logo" aria-label="Jordan Ellis home">
+        <span class="logo-mark">JE</span>
+        <span class="logo-text">Jordan Ellis</span>
+      </a>
+      <div class="header-controls">
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" aria-pressed="false">
           <span class="toggle-track" aria-hidden="true">
             <span class="toggle-thumb"></span>
@@ -50,334 +49,299 @@
             <i class="bi bi-moon-fill toggle-icon toggle-icon--dark"></i>
           </span>
         </button>
-
-        <!-- Hamburger -->
-        <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navOverlay">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
+        <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navOverlay">
+          <span class="ham-line ham-line--top"></span>
+          <span class="ham-line ham-line--mid"></span>
+          <span class="ham-line ham-line--bot"></span>
         </button>
-      </div>
-    </nav>
-  </header>
-
-  <!-- ══════════════════════════════════════════
-       NAV OVERLAY
-  ══════════════════════════════════════════ -->
-  <div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Navigation menu" aria-hidden="true">
-    <div class="nav-overlay__backdrop" id="navBackdrop" aria-hidden="true"></div>
-    <div class="nav-overlay__panel" id="navPanel">
-      <div class="nav-overlay__header">
-        <span class="nav-overlay__brand">AM</span>
-        <button class="nav-overlay__close" id="navClose" aria-label="Close navigation menu">
-          <i class="bi bi-x-lg" aria-hidden="true"></i>
-        </button>
-      </div>
-
-      <nav class="nav-overlay__links" aria-label="Site sections">
-        <a href="#hero"        class="nav-link" data-section="hero">Home</a>
-        <a href="#about"       class="nav-link" data-section="about">About</a>
-        <a href="#services"    class="nav-link" data-section="services">Services</a>
-        <a href="#why-us"      class="nav-link" data-section="why-us">Why Me</a>
-        <a href="#work"        class="nav-link" data-section="work">Work</a>
-        <a href="#testimonials" class="nav-link" data-section="testimonials">Testimonials</a>
-        <a href="#contact"     class="nav-link" data-section="contact">Contact</a>
-      </nav>
-
-      <div class="nav-overlay__cta">
-        <a href="#contact" class="btn btn--primary nav-cta-btn">
-          Let's Work Together
-          <i class="bi bi-arrow-right" aria-hidden="true"></i>
-        </a>
-      </div>
-
-      <div class="nav-overlay__social">
-        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-        <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" aria-label="Dribbble"><i class="bi bi-dribbble"></i></a>
       </div>
     </div>
+  </header>
+
+  <!-- NAV OVERLAY -->
+  <div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+    <nav class="nav-panel" id="navPanel">
+      <div class="nav-panel__inner">
+        <div class="nav-panel__top">
+          <span class="nav-panel__label">Menu</span>
+          <button class="nav-close" id="navClose" aria-label="Close navigation">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+        <ul class="nav-links" role="list">
+          <li class="nav-link-item"><a href="#hero"         class="nav-link"><span class="nav-num">01</span>Home</a></li>
+          <li class="nav-link-item"><a href="#about"        class="nav-link"><span class="nav-num">02</span>About</a></li>
+          <li class="nav-link-item"><a href="#services"     class="nav-link"><span class="nav-num">03</span>Services</a></li>
+          <li class="nav-link-item"><a href="#why-us"       class="nav-link"><span class="nav-num">04</span>Why Us</a></li>
+          <li class="nav-link-item"><a href="#work"         class="nav-link"><span class="nav-num">05</span>Work</a></li>
+          <li class="nav-link-item"><a href="#testimonials" class="nav-link"><span class="nav-num">06</span>Testimonials</a></li>
+          <li class="nav-link-item"><a href="#contact"      class="nav-link"><span class="nav-num">07</span>Contact</a></li>
+        </ul>
+        <div class="nav-panel__footer">
+          <a href="#contact" class="btn-primary nav-cta">Start a Project <i class="bi bi-arrow-up-right"></i></a>
+          <div class="nav-socials">
+            <a href="#" aria-label="LinkedIn"  class="social-icon"><i class="bi bi-linkedin"></i></a>
+            <a href="#" aria-label="Dribbble"  class="social-icon"><i class="bi bi-dribbble"></i></a>
+            <a href="#" aria-label="Behance"   class="social-icon"><i class="bi bi-behance"></i></a>
+            <a href="#" aria-label="Twitter/X" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
 
-  <main id="main-content">
+  <main id="main">
 
-    <!-- ══════════════════════════════════════════
-         HERO SECTION
-    ══════════════════════════════════════════ -->
-    <section class="hero" id="hero" aria-labelledby="heroHeading">
-      <div class="hero__bg" aria-hidden="true">
-        <div class="hero__gradient-orb hero__gradient-orb--1"></div>
-        <div class="hero__gradient-orb hero__gradient-orb--2"></div>
-        <div class="hero__gradient-orb hero__gradient-orb--3"></div>
-        <div class="hero__grid-overlay"></div>
-      </div>
+    <!-- HERO -->
+    <section class="hero-section" id="hero" aria-label="Hero">
+      <div class="orb orb--1" aria-hidden="true"></div>
+      <div class="orb orb--2" aria-hidden="true"></div>
+      <div class="orb orb--3" aria-hidden="true"></div>
+      <div class="hero-noise"  aria-hidden="true"></div>
 
-      <div class="hero__content">
-        <div class="hero__eyebrow" data-animate="fade-up">
-          <span class="eyebrow-dot"></span>
-          Available for Projects
-        </div>
-
-        <h1 class="hero__title" id="heroHeading">
-          <span class="hero__title-line" data-animate="fade-up" data-delay="0.1">Crafting Stories</span>
-          <span class="hero__title-line hero__title-line--accent" data-animate="fade-up" data-delay="0.2">That Move</span>
-          <span class="hero__title-line" data-animate="fade-up" data-delay="0.3">People Forward</span>
-        </h1>
-
-        <p class="hero__subtitle" data-animate="fade-up" data-delay="0.4">
-          I'm <strong>Alex Morgan</strong> — a Creative Strategist & Brand Consultant helping ambitious businesses build identities that resonate, convert, and endure.
-        </p>
-
-        <div class="hero__actions" data-animate="fade-up" data-delay="0.5">
-          <a href="#work" class="btn btn--primary btn--lg">
-            View My Work
-            <i class="bi bi-arrow-down-right" aria-hidden="true"></i>
-          </a>
-          <a href="#about" class="btn btn--ghost btn--lg">
-            Learn More
-          </a>
-        </div>
-
-        <div class="hero__stats" data-animate="fade-up" data-delay="0.6">
-          <div class="hero__stat">
-            <span class="stat-number" data-count="120">0</span><span class="stat-suffix">+</span>
-            <span class="stat-label">Projects Delivered</span>
+      <div class="container-xl position-relative">
+        <div class="hero-content">
+          <div class="hero-eyebrow" data-hero="eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            Available for projects in 2025
           </div>
-          <div class="hero__stat-divider" aria-hidden="true"></div>
-          <div class="hero__stat">
-            <span class="stat-number" data-count="8">0</span><span class="stat-suffix">yrs</span>
-            <span class="stat-label">Experience</span>
+
+          <h1 class="hero-title">
+            <span class="hero-title__line" data-hero="line">Crafting</span>
+            <span class="hero-title__line hero-title__line--accent" data-hero="line"><em>Brand Stories</em></span>
+            <span class="hero-title__line" data-hero="line">That Convert</span>
+          </h1>
+
+          <p class="hero-subtitle" data-hero="subtitle">
+            Multidisciplinary Creative Director with 12+ years helping ambitious brands
+            find their voice — and turn it into measurable growth.
+          </p>
+
+          <div class="hero-ctas" data-hero="ctas">
+            <a href="#work"    class="btn-primary"><span>View My Work</span> <i class="bi bi-arrow-right"></i></a>
+            <a href="#contact" class="btn-outline"><span>Let's Talk</span></a>
           </div>
-          <div class="hero__stat-divider" aria-hidden="true"></div>
-          <div class="hero__stat">
-            <span class="stat-number" data-count="95">0</span><span class="stat-suffix">%</span>
-            <span class="stat-label">Client Satisfaction</span>
+
+          <div class="hero-stats" data-hero="stats">
+            <div class="hero-stat">
+              <span class="stat-num" data-count="200">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Projects Delivered</span>
+            </div>
+            <div class="hero-stat-divider" aria-hidden="true"></div>
+            <div class="hero-stat">
+              <span class="stat-num" data-count="48">0</span><span class="stat-suffix">M</span>
+              <span class="stat-label">Revenue Influenced</span>
+            </div>
+            <div class="hero-stat-divider" aria-hidden="true"></div>
+            <div class="hero-stat">
+              <span class="stat-num" data-count="12">0</span><span class="stat-suffix">yr</span>
+              <span class="stat-label">Experience</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="hero__scroll-hint" aria-hidden="true">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
-      </div>
-
-      <!-- Floating badge -->
-      <div class="hero__badge" aria-hidden="true">
-        <svg viewBox="0 0 100 100" class="badge-ring">
-          <path id="badgePath" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"/>
-          <text>
-            <textPath href="#badgePath">CREATIVE STRATEGY • BRAND CONSULTING •&nbsp;</textPath>
-          </text>
-        </svg>
-        <div class="badge-center">
-          <i class="bi bi-stars"></i>
+        <div class="hero-badge" aria-hidden="true">
+          <svg viewBox="0 0 140 140" width="140" height="140" class="badge-svg">
+            <defs>
+              <path id="badgeCircle" d="M70,70 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/>
+            </defs>
+            <text class="badge-text">
+              <textPath href="#badgeCircle">Creative Director · Brand Architect · Visual Strategist ·&nbsp;</textPath>
+            </text>
+          </svg>
+          <div class="badge-star"><i class="bi bi-star-fill"></i></div>
         </div>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-hint__line"></div>
+        <span class="scroll-hint__text">Scroll</span>
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════
-         ABOUT SECTION
-    ══════════════════════════════════════════ -->
-    <section class="about section-padding" id="about" aria-labelledby="aboutHeading">
-      <div class="container">
-        <div class="about__grid">
+    <!-- ABOUT -->
+    <section class="about-section section-pad" id="about" aria-label="About">
+      <div class="container-xl">
+        <div class="row align-items-center g-5">
 
-          <div class="about__visual">
-            <div class="about__img-wrapper">
-              <div class="about__img-bg" aria-hidden="true"></div>
-              <img
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80"
-                alt="Alex Morgan, Creative Strategist"
-                class="about__img"
-                loading="lazy"
-                width="600"
-                height="700"
-              />
-              <div class="about__img-card glass-card" aria-hidden="true">
-                <i class="bi bi-award-fill"></i>
-                <span>Top 1% Consultant</span>
+          <div class="col-lg-5" data-reveal="left">
+            <div class="about-visual">
+              <div class="about-img-wrap">
+                <div class="about-img-bg" aria-hidden="true"></div>
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+                     alt="Jordan Ellis — Creative Director" class="about-img" loading="lazy" width="480" height="560" />
+              </div>
+              <div class="about-float-card glass-card">
+                <div class="float-card__icon"><i class="bi bi-patch-check-fill"></i></div>
+                <div>
+                  <p class="float-card__num">Top 1%</p>
+                  <p class="float-card__label">Creative Directors</p>
+                </div>
+              </div>
+              <div class="about-award glass-card">
+                <i class="bi bi-trophy-fill award-icon"></i>
+                <span>Awwwards SOTD × 14</span>
               </div>
             </div>
           </div>
 
-          <div class="about__content">
-            <div class="section-eyebrow">About Me</div>
-            <h2 class="section-title" id="aboutHeading">
-              Turning Vision Into <span class="text-accent">Lasting Impact</span>
-            </h2>
-            <p class="about__lead">
-              With over 8 years working at the intersection of strategy, creativity, and business growth, I partner with founders and executives to build brands that don't just look good — they perform.
+          <div class="col-lg-7" data-reveal="right">
+            <div class="section-label">About Me</div>
+            <h2 class="section-title">I Design Systems That<br><em>Outlive Trends</em></h2>
+            <p class="section-body">
+              Hi — I'm Jordan, a multidisciplinary creative director based in New York City.
+              I specialize in brand identity, digital experience design, and strategic visual
+              communication for startups, scale-ups, and global enterprises alike.
             </p>
-            <p class="about__body">
-              My approach blends rigorous strategic thinking with an intuitive creative sensibility. From Fortune 500 companies to fast-growing startups, I've helped organisations discover their authentic voice and translate it into every touchpoint of the customer experience.
+            <p class="section-body mt-3">
+              My process blends rigorous research with intuitive craft — uncovering the
+              essence of a brand and translating it into cohesive, memorable systems that
+              perform across every channel and touchpoint.
             </p>
-
-            <ul class="about__values">
-              <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Strategy-first creative approach</li>
-              <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Deep research & audience insight</li>
-              <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Measurable, outcome-driven work</li>
-              <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Long-term partnership mindset</li>
-            </ul>
-
-            <div class="about__cta">
-              <a href="#contact" class="btn btn--primary">Start a Conversation</a>
-              <a href="#" class="btn btn--outline" download aria-label="Download resume PDF">
-                <i class="bi bi-download" aria-hidden="true"></i> Download CV
-              </a>
+            <div class="about-skills">
+              <span class="skill-pill">Brand Strategy</span>
+              <span class="skill-pill">Visual Identity</span>
+              <span class="skill-pill">UX / UI Design</span>
+              <span class="skill-pill">Motion Design</span>
+              <span class="skill-pill">Design Systems</span>
+              <span class="skill-pill">Art Direction</span>
+            </div>
+            <div class="about-cta-row">
+              <a href="#contact" class="btn-primary">Work With Me <i class="bi bi-arrow-right"></i></a>
+              <a href="#" class="about-cv-link"><i class="bi bi-download"></i> Download CV</a>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════
-         SERVICES SECTION
-    ══════════════════════════════════════════ -->
-    <section class="services section-padding section-alt" id="services" aria-labelledby="servicesHeading">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-eyebrow">What I Do</div>
-          <h2 class="section-title" id="servicesHeading">Services Built for <span class="text-accent">Real Results</span></h2>
-          <p class="section-subtitle">Every engagement is tailored to your unique goals — no templates, no shortcuts.</p>
+    <!-- SERVICES -->
+    <section class="services-section section-pad" id="services" aria-label="Services">
+      <div class="container-xl">
+        <div class="section-header text-center" data-reveal="up">
+          <div class="section-label">What I Do</div>
+          <h2 class="section-title">Services Built for<br><em>Ambitious Brands</em></h2>
+          <p class="section-subtitle">End-to-end creative and strategic solutions that move the needle from first impression to lasting loyalty.</p>
         </div>
 
-        <div class="services__grid">
+        <div class="services-grid">
 
-          <article class="service-card glass-card" data-tilt>
-            <div class="service-card__icon" aria-hidden="true">
-              <i class="bi bi-compass"></i>
-            </div>
-            <h3 class="service-card__title">Brand Strategy</h3>
-            <p class="service-card__desc">Positioning, messaging architecture, and competitive differentiation that sets you apart in even the noisiest markets.</p>
-            <a href="#contact" class="service-card__link">
-              Start a project <i class="bi bi-arrow-right" aria-hidden="true"></i>
-            </a>
+          <article class="glass-card service-card" data-reveal="up" data-delay="0">
+            <div class="service-icon" aria-hidden="true"><i class="bi bi-layers-fill"></i></div>
+            <h3 class="service-title">Brand Identity</h3>
+            <p class="service-desc">Complete brand architecture — logo systems, color palettes, typography, and usage guidelines that give your brand a clear, ownable voice.</p>
+            <a href="#contact" class="service-cta">Get Started <i class="bi bi-arrow-right"></i></a>
           </article>
 
-          <article class="service-card glass-card service-card--featured" data-tilt>
-            <div class="service-card__badge">Most Popular</div>
-            <div class="service-card__icon" aria-hidden="true">
-              <i class="bi bi-palette2"></i>
-            </div>
-            <h3 class="service-card__title">Creative Direction</h3>
-            <p class="service-card__desc">Visual identity systems, art direction, and brand expression guidelines that keep every asset consistent and compelling.</p>
-            <a href="#contact" class="service-card__link">
-              Start a project <i class="bi bi-arrow-right" aria-hidden="true"></i>
-            </a>
+          <article class="glass-card service-card service-card--featured" data-reveal="up" data-delay="80">
+            <div class="service-badge-tag">Most Popular</div>
+            <div class="service-icon" aria-hidden="true"><i class="bi bi-phone-fill"></i></div>
+            <h3 class="service-title">Digital Experience</h3>
+            <p class="service-desc">Intuitive, conversion-focused websites and apps that balance aesthetic beauty with rock-solid UX principles and performance.</p>
+            <a href="#contact" class="service-cta">Get Started <i class="bi bi-arrow-right"></i></a>
           </article>
 
-          <article class="service-card glass-card" data-tilt>
-            <div class="service-card__icon" aria-hidden="true">
-              <i class="bi bi-megaphone"></i>
-            </div>
-            <h3 class="service-card__title">Content Strategy</h3>
-            <p class="service-card__desc">Editorial frameworks, content calendars, and storytelling playbooks that build audience trust over time.</p>
-            <a href="#contact" class="service-card__link">
-              Start a project <i class="bi bi-arrow-right" aria-hidden="true"></i>
-            </a>
+          <article class="glass-card service-card" data-reveal="up" data-delay="160">
+            <div class="service-icon" aria-hidden="true"><i class="bi bi-graph-up-arrow"></i></div>
+            <h3 class="service-title">Brand Strategy</h3>
+            <p class="service-desc">Research-backed positioning, competitive audits, and messaging frameworks that align your team and speak directly to your audience.</p>
+            <a href="#contact" class="service-cta">Get Started <i class="bi bi-arrow-right"></i></a>
           </article>
 
-          <article class="service-card glass-card" data-tilt>
-            <div class="service-card__icon" aria-hidden="true">
-              <i class="bi bi-graph-up-arrow"></i>
-            </div>
-            <h3 class="service-card__title">Growth Consulting</h3>
-            <p class="service-card__desc">Go-to-market strategies, launch plans, and growth frameworks that convert attention into measurable business outcomes.</p>
-            <a href="#contact" class="service-card__link">
-              Start a project <i class="bi bi-arrow-right" aria-hidden="true"></i>
-            </a>
+          <article class="glass-card service-card" data-reveal="up" data-delay="0">
+            <div class="service-icon" aria-hidden="true"><i class="bi bi-camera-video-fill"></i></div>
+            <h3 class="service-title">Motion & Video</h3>
+            <p class="service-desc">Animated brand expressions, social content, product demos, and narrative-driven video that captures attention in milliseconds.</p>
+            <a href="#contact" class="service-cta">Get Started <i class="bi bi-arrow-right"></i></a>
           </article>
 
-          <article class="service-card glass-card" data-tilt>
-            <div class="service-card__icon" aria-hidden="true">
-              <i class="bi bi-people"></i>
-            </div>
-            <h3 class="service-card__title">Executive Coaching</h3>
-            <p class="service-card__desc">1:1 coaching for founders and senior leaders — refining personal brand, communication, and leadership presence.</p>
-            <a href="#contact" class="service-card__link">
-              Start a project <i class="bi bi-arrow-right" aria-hidden="true"></i>
-            </a>
+          <article class="glass-card service-card" data-reveal="up" data-delay="80">
+            <div class="service-icon" aria-hidden="true"><i class="bi bi-grid-3x3-gap-fill"></i></div>
+            <h3 class="service-title">Design Systems</h3>
+            <p class="service-desc">Scalable component libraries and token-based systems that keep product teams shipping consistently at speed — no drift, no chaos.</p>
+            <a href="#contact" class="service-cta">Get Started <i class="bi bi-arrow-right"></i></a>
           </article>
 
-          <article class="service-card glass-card" data-tilt>
-            <div class="service-card__icon" aria-hidden="true">
-              <i class="bi bi-layers"></i>
-            </div>
-            <h3 class="service-card__title">Digital Experience</h3>
-            <p class="service-card__desc">UX strategy and digital brand experience design — from websites to campaigns — rooted in user psychology.</p>
-            <a href="#contact" class="service-card__link">
-              Start a project <i class="bi bi-arrow-right" aria-hidden="true"></i>
-            </a>
+          <article class="glass-card service-card" data-reveal="up" data-delay="160">
+            <div class="service-icon" aria-hidden="true"><i class="bi bi-megaphone-fill"></i></div>
+            <h3 class="service-title">Campaign Creative</h3>
+            <p class="service-desc">Full-funnel campaign art direction — from hero visuals and OOH to paid social, email, and landing pages that convert.</p>
+            <a href="#contact" class="service-cta">Get Started <i class="bi bi-arrow-right"></i></a>
           </article>
 
         </div>
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════
-         WHY CHOOSE US SECTION
-    ══════════════════════════════════════════ -->
-    <section class="why-us section-padding" id="why-us" aria-labelledby="whyUsHeading">
-      <div class="container">
-        <div class="why-us__grid">
+    <!-- WHY US -->
+    <section class="why-section section-pad" id="why-us" aria-label="Why choose me">
+      <div class="container-xl">
+        <div class="row g-5 align-items-center">
 
-          <div class="why-us__content">
-            <div class="section-eyebrow">Why Work With Me</div>
-            <h2 class="section-title" id="whyUsHeading">The Difference is in <span class="text-accent">the Detail</span></h2>
-            <p class="section-subtitle--left">
-              I don't hand off to junior teams. You get my direct involvement from brief to final delivery — with obsessive attention to quality at every stage.
-            </p>
-
-            <div class="why-us__pillars">
-
-              <div class="pillar">
-                <div class="pillar__num" aria-hidden="true">01</div>
-                <div class="pillar__body">
-                  <h3 class="pillar__title">Research-Led Thinking</h3>
-                  <p>Every recommendation is backed by market research, competitor analysis, and genuine audience empathy — not assumptions.</p>
+          <div class="col-lg-5" data-reveal="left">
+            <div class="section-label">Why Choose Me</div>
+            <h2 class="section-title">A Partner, Not<br>Just a <em>Vendor</em></h2>
+            <p class="section-body">Beyond executional excellence, I bring strategic thinking, proactive communication, and a genuine investment in your success to every engagement.</p>
+            <div class="why-pillars">
+              <div class="why-pillar">
+                <div class="pillar-num">01</div>
+                <div class="pillar-content">
+                  <h4 class="pillar-title">Strategy-First Approach</h4>
+                  <p class="pillar-body">Every design decision is grounded in audience insight and business objectives — never aesthetic whim.</p>
                 </div>
               </div>
-
-              <div class="pillar">
-                <div class="pillar__num" aria-hidden="true">02</div>
-                <div class="pillar__body">
-                  <h3 class="pillar__title">Collaborative Process</h3>
-                  <p>You're a partner, not a passive recipient. Clear milestones, regular check-ins, and an open-door communication policy throughout.</p>
+              <div class="why-pillar">
+                <div class="pillar-num">02</div>
+                <div class="pillar-content">
+                  <h4 class="pillar-title">Radical Transparency</h4>
+                  <p class="pillar-body">Clear timelines, honest communication, and zero surprise invoices. You always know where things stand.</p>
                 </div>
               </div>
-
-              <div class="pillar">
-                <div class="pillar__num" aria-hidden="true">03</div>
-                <div class="pillar__body">
-                  <h3 class="pillar__title">Results You Can Measure</h3>
-                  <p>Brand clarity, pipeline growth, stronger retention — every engagement is tied to KPIs that matter to your business.</p>
+              <div class="why-pillar">
+                <div class="pillar-num">03</div>
+                <div class="pillar-content">
+                  <h4 class="pillar-title">Measurable Impact</h4>
+                  <p class="pillar-body">I track what moves the needle. My clients average a 3.4× ROI lift within 6 months of brand launch.</p>
                 </div>
               </div>
-
+              <div class="why-pillar">
+                <div class="pillar-num">04</div>
+                <div class="pillar-content">
+                  <h4 class="pillar-title">Post-Launch Support</h4>
+                  <p class="pillar-body">The relationship doesn't end at handoff. I stay engaged to iterate, optimise, and evolve with you.</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="why-us__visual">
-            <div class="why-us__card-stack">
-              <div class="stack-card stack-card--back glass-card" aria-hidden="true"></div>
-              <div class="stack-card stack-card--mid glass-card" aria-hidden="true"></div>
-              <div class="stack-card stack-card--front glass-card">
-                <div class="stack-card__inner">
-                  <div class="stack-metric">
-                    <span class="stack-metric__num counter" data-count="3.4">0</span><span class="stack-metric__suffix">×</span>
-                    <span class="stack-metric__label">Average ROI</span>
+          <div class="col-lg-7" data-reveal="right">
+            <div class="why-cards-stack">
+              <div class="glass-card why-card why-card--back"  aria-hidden="true"></div>
+              <div class="glass-card why-card why-card--mid"   aria-hidden="true"></div>
+              <div class="glass-card why-card why-card--front">
+                <div class="why-card__header">
+                  <div class="wc-icon"><i class="bi bi-bar-chart-fill"></i></div>
+                  <span class="wc-badge">Average Client Result</span>
+                </div>
+                <div class="why-card__metric">
+                  <span class="metric-num">3.4<span class="metric-x">×</span></span>
+                  <span class="metric-label">ROI Lift</span>
+                </div>
+                <div class="why-card__bars">
+                  <div class="bar-row">
+                    <span class="bar-name">Before</span>
+                    <div class="bar-track"><div class="bar-fill bar-fill--before" style="--w:32%"></div></div>
+                    <span class="bar-val">32%</span>
                   </div>
-                  <hr class="stack-divider" aria-hidden="true" />
-                  <p class="stack-quote">"Alex redefined how we think about our brand. The results were immediate and lasting."</p>
-                  <div class="stack-author">
-                    <img src="https://i.pravatar.cc/48?img=12" alt="Client headshot" width="48" height="48" loading="lazy" />
-                    <div>
-                      <strong>Sarah Chen</strong>
-                      <span>CEO, NovaTech</span>
-                    </div>
+                  <div class="bar-row">
+                    <span class="bar-name">After</span>
+                    <div class="bar-track"><div class="bar-fill bar-fill--after" style="--w:87%"></div></div>
+                    <span class="bar-val">87%</span>
                   </div>
                 </div>
+                <p class="why-card__note">Based on 50+ brand transformation projects, 2019–2024.</p>
               </div>
             </div>
           </div>
@@ -386,371 +350,366 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════
-         FEATURED WORK SECTION
-    ══════════════════════════════════════════ -->
-    <section class="work section-padding section-alt" id="work" aria-labelledby="workHeading">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-eyebrow">Featured Work</div>
-          <h2 class="section-title" id="workHeading">Selected <span class="text-accent">Projects</span></h2>
-          <p class="section-subtitle">A curated look at recent brand, strategy, and digital work.</p>
+    <!-- FEATURED WORK -->
+    <section class="work-section section-pad" id="work" aria-label="Featured Work">
+      <div class="container-xl">
+        <div class="section-header text-center" data-reveal="up">
+          <div class="section-label">Portfolio</div>
+          <h2 class="section-title">Featured <em>Work</em></h2>
+          <p class="section-subtitle">A curated selection of projects across brand, strategy, and digital.</p>
         </div>
 
-        <div class="work__filter" role="group" aria-label="Filter projects">
+        <div class="work-filters" role="group" aria-label="Filter work" data-reveal="up">
           <button class="filter-btn active" data-filter="all">All</button>
           <button class="filter-btn" data-filter="brand">Brand</button>
           <button class="filter-btn" data-filter="strategy">Strategy</button>
           <button class="filter-btn" data-filter="digital">Digital</button>
+          <button class="filter-btn" data-filter="motion">Motion</button>
         </div>
 
-        <div class="work__grid">
+        <div class="work-grid" id="workGrid">
 
-          <article class="work-card" data-category="brand">
+          <article class="work-card work-card--wide" data-category="brand" data-reveal="up">
             <div class="work-card__img-wrap">
-              <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=700&q=80" alt="NovaTech brand identity project" loading="lazy" width="700" height="460" />
+              <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&q=80" alt="Luminary Brand System" class="work-img" loading="lazy" />
               <div class="work-card__overlay">
-                <a href="#" class="work-card__view" aria-label="View NovaTech project">
-                  <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
-                </a>
+                <span class="work-tag">Brand · Strategy</span>
+                <a href="#" class="work-view-btn" aria-label="View Luminary project"><i class="bi bi-arrow-up-right"></i></a>
               </div>
             </div>
             <div class="work-card__body">
-              <span class="work-card__tag">Brand Identity</span>
-              <h3 class="work-card__title">NovaTech Rebrand</h3>
-              <p class="work-card__desc">Complete visual identity overhaul for a SaaS scale-up, including logo system, design tokens, and brand guidelines.</p>
+              <p class="work-category">Brand · Strategy</p>
+              <h3 class="work-title">Luminary — Full Brand System</h3>
+              <p class="work-desc">Complete visual identity for a wellness SaaS — from logo system to full UI kit.</p>
             </div>
           </article>
 
-          <article class="work-card work-card--wide" data-category="strategy">
+          <article class="work-card" data-category="digital" data-reveal="up">
             <div class="work-card__img-wrap">
-              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1000&q=80" alt="Meridian growth strategy project" loading="lazy" width="1000" height="460" />
+              <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?w=600&q=80" alt="Nexus App Redesign" class="work-img" loading="lazy" />
               <div class="work-card__overlay">
-                <a href="#" class="work-card__view" aria-label="View Meridian project">
-                  <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
-                </a>
+                <span class="work-tag">Digital</span>
+                <a href="#" class="work-view-btn" aria-label="View Nexus project"><i class="bi bi-arrow-up-right"></i></a>
               </div>
             </div>
             <div class="work-card__body">
-              <span class="work-card__tag">Growth Strategy</span>
-              <h3 class="work-card__title">Meridian GTM Launch</h3>
-              <p class="work-card__desc">Full go-to-market strategy for a fintech product launch — resulting in 40K users in the first 90 days.</p>
+              <p class="work-category">Digital · UX</p>
+              <h3 class="work-title">Nexus App Redesign</h3>
+              <p class="work-desc">Product redesign that increased activation rates by 62%.</p>
             </div>
           </article>
 
-          <article class="work-card" data-category="digital">
+          <article class="work-card" data-category="motion" data-reveal="up">
             <div class="work-card__img-wrap">
-              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80" alt="Lumina digital experience project" loading="lazy" width="700" height="460" />
+              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Saffron Motion Campaign" class="work-img" loading="lazy" />
               <div class="work-card__overlay">
-                <a href="#" class="work-card__view" aria-label="View Lumina project">
-                  <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
-                </a>
+                <span class="work-tag">Motion</span>
+                <a href="#" class="work-view-btn" aria-label="View Saffron project"><i class="bi bi-arrow-up-right"></i></a>
               </div>
             </div>
             <div class="work-card__body">
-              <span class="work-card__tag">Digital Experience</span>
-              <h3 class="work-card__title">Lumina UX Strategy</h3>
-              <p class="work-card__desc">End-to-end digital experience audit and redesign strategy for a consumer wellness platform.</p>
+              <p class="work-category">Motion · Campaign</p>
+              <h3 class="work-title">Saffron Motion Campaign</h3>
+              <p class="work-desc">Animated brand launch series across social and OOH channels.</p>
             </div>
           </article>
 
-          <article class="work-card" data-category="brand">
+          <article class="work-card" data-category="strategy" data-reveal="up">
             <div class="work-card__img-wrap">
-              <img src="https://images.unsplash.com/photo-1524234107056-1c1f48f64ab8?w=700&q=80" alt="Aurelius brand project" loading="lazy" width="700" height="460" />
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Meridian Strategy" class="work-img" loading="lazy" />
               <div class="work-card__overlay">
-                <a href="#" class="work-card__view" aria-label="View Aurelius project">
-                  <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
-                </a>
+                <span class="work-tag">Strategy</span>
+                <a href="#" class="work-view-btn" aria-label="View Meridian project"><i class="bi bi-arrow-up-right"></i></a>
               </div>
             </div>
             <div class="work-card__body">
-              <span class="work-card__tag">Brand Strategy</span>
-              <h3 class="work-card__title">Aurelius Positioning</h3>
-              <p class="work-card__desc">Repositioning strategy for a luxury hospitality brand entering new international markets.</p>
+              <p class="work-category">Strategy · Positioning</p>
+              <h3 class="work-title">Meridian Strategy Overhaul</h3>
+              <p class="work-desc">Repositioning a fintech brand for Series B growth.</p>
             </div>
           </article>
 
-        </div>
-
-        <div class="work__cta">
-          <a href="#contact" class="btn btn--outline btn--lg">
-            Discuss Your Project <i class="bi bi-arrow-right" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════
-         TESTIMONIALS SECTION
-    ══════════════════════════════════════════ -->
-    <section class="testimonials section-padding" id="testimonials" aria-labelledby="testimonialsHeading">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-eyebrow">Testimonials</div>
-          <h2 class="section-title" id="testimonialsHeading">Words from <span class="text-accent">Happy Clients</span></h2>
-        </div>
-
-        <div class="testimonials__track-wrapper" role="region" aria-label="Client testimonials carousel">
-          <div class="testimonials__track" id="testimonialsTrack">
-
-            <article class="testimonial-card glass-card">
-              <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
+          <article class="work-card" data-category="brand" data-reveal="up">
+            <div class="work-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=600&q=80" alt="Forté Packaging" class="work-img" loading="lazy" />
+              <div class="work-card__overlay">
+                <span class="work-tag">Brand</span>
+                <a href="#" class="work-view-btn" aria-label="View Forté project"><i class="bi bi-arrow-up-right"></i></a>
               </div>
-              <blockquote class="testimonial-card__quote">
-                "Alex doesn't just deliver strategy — she delivers clarity. Our rebrand under her guidance resulted in a 60% lift in brand recall within six months."
-              </blockquote>
-              <div class="testimonial-card__author">
-                <img src="https://i.pravatar.cc/60?img=47" alt="Marcus Reid" width="60" height="60" loading="lazy" />
-                <div>
-                  <strong>Marcus Reid</strong>
-                  <span>CMO, Vertex Solutions</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="testimonial-card glass-card">
-              <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-              </div>
-              <blockquote class="testimonial-card__quote">
-                "Working with Alex felt like having a thought partner who genuinely understood our business. The content strategy she built became our north star."
-              </blockquote>
-              <div class="testimonial-card__author">
-                <img src="https://i.pravatar.cc/60?img=5" alt="Priya Sharma" width="60" height="60" loading="lazy" />
-                <div>
-                  <strong>Priya Sharma</strong>
-                  <span>Founder, GreenLeaf Co.</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="testimonial-card glass-card">
-              <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-              </div>
-              <blockquote class="testimonial-card__quote">
-                "Exceptional strategic mind. Alex helped us find our voice when we were struggling to articulate our value proposition to enterprise buyers."
-              </blockquote>
-              <div class="testimonial-card__author">
-                <img src="https://i.pravatar.cc/60?img=33" alt="James Okafor" width="60" height="60" loading="lazy" />
-                <div>
-                  <strong>James Okafor</strong>
-                  <span>VP Sales, CloudBase Inc.</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="testimonial-card glass-card">
-              <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-                <i class="bi bi-star-fill" aria-hidden="true"></i>
-              </div>
-              <blockquote class="testimonial-card__quote">
-                "The level of detail and creative rigour Alex brings to every brief is unmatched. She elevated our brand far beyond what we thought was possible."
-              </blockquote>
-              <div class="testimonial-card__author">
-                <img src="https://i.pravatar.cc/60?img=20" alt="Claire Dupont" width="60" height="60" loading="lazy" />
-                <div>
-                  <strong>Claire Dupont</strong>
-                  <span>Director, Lumière Studio</span>
-                </div>
-              </div>
-            </article>
-
-          </div>
-
-          <div class="testimonials__controls" aria-label="Carousel controls">
-            <button class="carousel-btn" id="testimonialPrev" aria-label="Previous testimonial">
-              <i class="bi bi-arrow-left" aria-hidden="true"></i>
-            </button>
-            <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Testimonial slides"></div>
-            <button class="carousel-btn" id="testimonialNext" aria-label="Next testimonial">
-              <i class="bi bi-arrow-right" aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════
-         STATS COUNTER SECTION
-    ══════════════════════════════════════════ -->
-    <section class="stats section-padding section-alt" id="stats" aria-labelledby="statsHeading">
-      <div class="container">
-        <h2 class="sr-only" id="statsHeading">Key Statistics</h2>
-        <div class="stats__grid">
-
-          <div class="stat-item">
-            <div class="stat-item__icon" aria-hidden="true"><i class="bi bi-briefcase-fill"></i></div>
-            <div class="stat-item__number">
-              <span class="counter" data-count="120">0</span><span>+</span>
             </div>
-            <div class="stat-item__label">Projects Completed</div>
-          </div>
-
-          <div class="stat-item">
-            <div class="stat-item__icon" aria-hidden="true"><i class="bi bi-globe2"></i></div>
-            <div class="stat-item__number">
-              <span class="counter" data-count="24">0</span>
+            <div class="work-card__body">
+              <p class="work-category">Brand · Packaging</p>
+              <h3 class="work-title">Forté Packaging & Identity</h3>
+              <p class="work-desc">Premium CPG brand identity and retail packaging system.</p>
             </div>
-            <div class="stat-item__label">Countries Served</div>
-          </div>
+          </article>
 
-          <div class="stat-item">
-            <div class="stat-item__icon" aria-hidden="true"><i class="bi bi-emoji-smile-fill"></i></div>
-            <div class="stat-item__number">
-              <span class="counter" data-count="98">0</span><span>%</span>
+          <article class="work-card" data-category="digital" data-reveal="up">
+            <div class="work-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80" alt="Vela E-Commerce" class="work-img" loading="lazy" />
+              <div class="work-card__overlay">
+                <span class="work-tag">Digital</span>
+                <a href="#" class="work-view-btn" aria-label="View Vela project"><i class="bi bi-arrow-up-right"></i></a>
+              </div>
             </div>
-            <div class="stat-item__label">Client Satisfaction</div>
-          </div>
-
-          <div class="stat-item">
-            <div class="stat-item__icon" aria-hidden="true"><i class="bi bi-trophy-fill"></i></div>
-            <div class="stat-item__number">
-              <span class="counter" data-count="14">0</span>
+            <div class="work-card__body">
+              <p class="work-category">Digital · E-Commerce</p>
+              <h3 class="work-title">Vela E-Commerce Experience</h3>
+              <p class="work-desc">Luxury fashion store with a 41% checkout completion uplift.</p>
             </div>
-            <div class="stat-item__label">Industry Awards</div>
-          </div>
+          </article>
 
         </div>
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════
-         CTA STRIP
-    ══════════════════════════════════════════ -->
-    <section class="cta-strip section-padding" id="contact" aria-labelledby="ctaHeading">
-      <div class="cta-strip__bg" aria-hidden="true">
-        <div class="cta-strip__orb cta-strip__orb--1"></div>
-        <div class="cta-strip__orb cta-strip__orb--2"></div>
-      </div>
-      <div class="container">
-        <div class="cta-strip__content">
-          <div class="section-eyebrow section-eyebrow--light">Ready to Begin?</div>
-          <h2 class="cta-strip__title" id="ctaHeading">Let's Build Something <br /><span>Extraordinary Together</span></h2>
-          <p class="cta-strip__subtitle">
-            Whether you have a fully-formed brief or just an idea, I'd love to explore what we could build together.
-          </p>
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section section-pad" id="testimonials" aria-label="Client Testimonials">
+      <div class="container-xl">
+        <div class="section-header text-center" data-reveal="up">
+          <div class="section-label">Social Proof</div>
+          <h2 class="section-title">Words from<br><em>Happy Clients</em></h2>
+        </div>
 
-          <form class="cta-strip__form" id="contactForm" novalidate aria-label="Contact form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="contactName" class="sr-only">Your Name</label>
-                <input type="text" id="contactName" name="name" placeholder="Your Name" required autocomplete="name" />
+        <div class="testimonials-carousel" data-reveal="up">
+          <div class="testi-track" id="testiTrack" role="list">
+
+            <article class="glass-card testi-card" role="listitem">
+              <div class="testi-stars" aria-label="5 out of 5 stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <blockquote class="testi-quote">"Jordan completely transformed how we present ourselves to the world. The new brand identity tripled our inbound inquiry rate within 90 days. Absolutely phenomenal work."</blockquote>
+              <div class="testi-author">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sophia Reeves" class="testi-avatar" loading="lazy" width="48" height="48" />
+                <div>
+                  <p class="testi-name">Sophia Reeves</p>
+                  <p class="testi-role">CEO, Luminary Health</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="glass-card testi-card" role="listitem">
+              <div class="testi-stars" aria-label="5 out of 5 stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <blockquote class="testi-quote">"Rare to find someone who thinks as a strategist AND executes at world-class creative quality. Jordan's work on our Series B pitch deck helped us close a $24M round."</blockquote>
+              <div class="testi-author">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marcus Chen" class="testi-avatar" loading="lazy" width="48" height="48" />
+                <div>
+                  <p class="testi-name">Marcus Chen</p>
+                  <p class="testi-role">Founder, Meridian Fintech</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="glass-card testi-card" role="listitem">
+              <div class="testi-stars" aria-label="5 out of 5 stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <blockquote class="testi-quote">"Working with Jordan felt like having a CMO and creative director in one. Every deliverable arrived on time, exceeded expectations, and the whole team loved the new direction."</blockquote>
+              <div class="testi-author">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Aisha Okafor" class="testi-avatar" loading="lazy" width="48" height="48" />
+                <div>
+                  <p class="testi-name">Aisha Okafor</p>
+                  <p class="testi-role">VP Marketing, Forté CPG</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="glass-card testi-card" role="listitem">
+              <div class="testi-stars" aria-label="5 out of 5 stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <blockquote class="testi-quote">"The Vela redesign was our best business decision of the year. Jordan's user-centric approach and meticulous attention to detail translated directly to a 41% jump in conversions."</blockquote>
+              <div class="testi-author">
+                <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Luca Ferraro" class="testi-avatar" loading="lazy" width="48" height="48" />
+                <div>
+                  <p class="testi-name">Luca Ferraro</p>
+                  <p class="testi-role">Co-founder, Vela Fashion</p>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <div class="testi-controls">
+            <button class="testi-btn" id="testiPrev" aria-label="Previous testimonial"><i class="bi bi-arrow-left"></i></button>
+            <div class="testi-dots" id="testiDots" role="tablist" aria-label="Testimonial slides"></div>
+            <button class="testi-btn" id="testiNext" aria-label="Next testimonial"><i class="bi bi-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-section section-pad" id="stats" aria-label="Statistics">
+      <div class="container-xl">
+        <div class="stats-grid">
+          <div class="stat-block" data-reveal="up" data-delay="0">
+            <div class="stat-icon"><i class="bi bi-briefcase-fill"></i></div>
+            <div class="stat-num-wrap">
+              <span class="stat-counter" data-count="200">0</span><span class="stat-unit">+</span>
+            </div>
+            <p class="stat-desc">Projects Completed</p>
+          </div>
+          <div class="stat-block" data-reveal="up" data-delay="100">
+            <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+            <div class="stat-num-wrap">
+              <span class="stat-counter" data-count="84">0</span><span class="stat-unit">+</span>
+            </div>
+            <p class="stat-desc">Happy Clients</p>
+          </div>
+          <div class="stat-block" data-reveal="up" data-delay="200">
+            <div class="stat-icon"><i class="bi bi-trophy-fill"></i></div>
+            <div class="stat-num-wrap">
+              <span class="stat-counter" data-count="27">0</span><span class="stat-unit">+</span>
+            </div>
+            <p class="stat-desc">Industry Awards</p>
+          </div>
+          <div class="stat-block" data-reveal="up" data-delay="300">
+            <div class="stat-icon"><i class="bi bi-star-fill"></i></div>
+            <div class="stat-num-wrap">
+              <span class="stat-counter" data-count="12">0</span><span class="stat-unit">yr</span>
+            </div>
+            <p class="stat-desc">Years Experience</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / CONTACT -->
+    <section class="cta-section section-pad" id="contact" aria-label="Contact">
+      <div class="cta-orb cta-orb--1" aria-hidden="true"></div>
+      <div class="cta-orb cta-orb--2" aria-hidden="true"></div>
+      <div class="container-xl">
+        <div class="row g-5 align-items-center">
+
+          <div class="col-lg-6" data-reveal="left">
+            <div class="section-label cta-label">Let's Build Something</div>
+            <h2 class="section-title cta-title">Ready to Elevate<br>Your <em>Brand?</em></h2>
+            <p class="section-body cta-body">Whether you're launching something new, refreshing an existing identity, or need a strategic creative partner — I'd love to hear about it.</p>
+            <div class="cta-contact-details">
+              <a href="mailto:hello@jordanellis.co" class="cta-detail-link"><i class="bi bi-envelope-fill"></i> hello@jordanellis.co</a>
+              <a href="tel:+12125550192"             class="cta-detail-link"><i class="bi bi-telephone-fill"></i> +1 (212) 555-0192</a>
+              <div class="cta-detail-link"><i class="bi bi-geo-alt-fill"></i> New York City, NY</div>
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-reveal="right">
+            <form class="contact-form glass-card" id="contactForm" novalidate>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="fname" class="form-label-custom">First Name</label>
+                  <input type="text" id="fname" name="fname" class="form-input" placeholder="Alex" required autocomplete="given-name" />
+                </div>
+                <div class="form-group">
+                  <label for="lname" class="form-label-custom">Last Name</label>
+                  <input type="text" id="lname" name="lname" class="form-input" placeholder="Johnson" required autocomplete="family-name" />
+                </div>
               </div>
               <div class="form-group">
-                <label for="contactEmail" class="sr-only">Your Email</label>
-                <input type="email" id="contactEmail" name="email" placeholder="Your Email" required autocomplete="email" />
+                <label for="email" class="form-label-custom">Email Address</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="alex@company.com" required autocomplete="email" />
               </div>
-            </div>
-            <div class="form-group form-group--full">
-              <label for="contactMessage" class="sr-only">Your Message</label>
-              <textarea id="contactMessage" name="message" placeholder="Tell me about your project…" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn btn--white btn--lg">
-              Send Message <i class="bi bi-send-fill" aria-hidden="true"></i>
-            </button>
-            <div class="form-feedback" id="formFeedback" role="status" aria-live="polite"></div>
-          </form>
+              <div class="form-group">
+                <label for="service" class="form-label-custom">Service Interested In</label>
+                <select id="service" name="service" class="form-input form-select-custom">
+                  <option value="" disabled selected>Select a service...</option>
+                  <option value="brand">Brand Identity</option>
+                  <option value="digital">Digital Experience</option>
+                  <option value="strategy">Brand Strategy</option>
+                  <option value="motion">Motion & Video</option>
+                  <option value="systems">Design Systems</option>
+                  <option value="campaign">Campaign Creative</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message" class="form-label-custom">Your Message</label>
+                <textarea id="message" name="message" class="form-input form-textarea" rows="4" placeholder="Tell me about your project..." required></textarea>
+              </div>
+              <button type="submit" class="btn-primary form-submit" id="formSubmit">
+                <span class="submit-text">Send Message</span>
+                <i class="bi bi-send-fill"></i>
+              </button>
+              <p class="form-privacy"><i class="bi bi-shield-check"></i> Your info is safe. No spam, ever.</p>
+            </form>
+          </div>
+
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ══════════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════════ -->
+  <!-- FOOTER -->
   <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer__grid">
+    <div class="container-xl">
+      <div class="footer-grid">
 
-        <div class="footer__brand">
-          <a href="#hero" class="footer__logo" aria-label="Alex Morgan home">
-            <span class="logo-mark">AM</span>
-            <span>Alex Morgan</span>
-          </a>
-          <p>Creative Strategist & Brand Consultant. Crafting stories that move people forward.</p>
-          <div class="footer__social">
-            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" aria-label="Dribbble"><i class="bi bi-dribbble"></i></a>
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo footer-logo"><span class="logo-mark">JE</span><span class="logo-text">Jordan Ellis</span></a>
+          <p class="footer-tagline">Crafting brand stories that convert — with strategy, craft, and intention.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="LinkedIn"   class="social-icon"><i class="bi bi-linkedin"></i></a>
+            <a href="#" aria-label="Dribbble"   class="social-icon"><i class="bi bi-dribbble"></i></a>
+            <a href="#" aria-label="Behance"    class="social-icon"><i class="bi bi-behance"></i></a>
+            <a href="#" aria-label="Twitter/X"  class="social-icon"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="Instagram"  class="social-icon"><i class="bi bi-instagram"></i></a>
           </div>
         </div>
 
-        <div class="footer__nav">
-          <h3 class="footer__heading">Navigation</h3>
-          <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
+        <div class="footer-col">
+          <h4 class="footer-heading">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero"         class="footer-link">Home</a></li>
+            <li><a href="#about"        class="footer-link">About</a></li>
+            <li><a href="#services"     class="footer-link">Services</a></li>
+            <li><a href="#work"         class="footer-link">Portfolio</a></li>
+            <li><a href="#contact"      class="footer-link">Contact</a></li>
           </ul>
         </div>
 
-        <div class="footer__services">
-          <h3 class="footer__heading">Services</h3>
-          <ul>
-            <li><a href="#services">Brand Strategy</a></li>
-            <li><a href="#services">Creative Direction</a></li>
-            <li><a href="#services">Content Strategy</a></li>
-            <li><a href="#services">Growth Consulting</a></li>
-            <li><a href="#services">Executive Coaching</a></li>
-            <li><a href="#services">Digital Experience</a></li>
+        <div class="footer-col">
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services" class="footer-link">Brand Identity</a></li>
+            <li><a href="#services" class="footer-link">Digital Experience</a></li>
+            <li><a href="#services" class="footer-link">Brand Strategy</a></li>
+            <li><a href="#services" class="footer-link">Motion & Video</a></li>
+            <li><a href="#services" class="footer-link">Design Systems</a></li>
           </ul>
         </div>
 
-        <div class="footer__contact">
-          <h3 class="footer__heading">Get In Touch</h3>
-          <ul class="footer__contact-list">
-            <li>
-              <i class="bi bi-envelope-fill" aria-hidden="true"></i>
-              <a href="mailto:hello@alexmorgan.co">hello@alexmorgan.co</a>
-            </li>
-            <li>
-              <i class="bi bi-telephone-fill" aria-hidden="true"></i>
-              <a href="tel:+12025551234">+1 (202) 555-1234</a>
-            </li>
-            <li>
-              <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
-              <span>New York, NY · Remote Worldwide</span>
-            </li>
+        <div class="footer-col">
+          <h4 class="footer-heading">Get in Touch</h4>
+          <ul class="footer-links footer-contact-list">
+            <li><a href="mailto:hello@jordanellis.co" class="footer-link"><i class="bi bi-envelope-fill"></i> hello@jordanellis.co</a></li>
+            <li><a href="tel:+12125550192"            class="footer-link"><i class="bi bi-telephone-fill"></i> +1 (212) 555-0192</a></li>
+            <li class="footer-link"><i class="bi bi-geo-alt-fill"></i> New York City, NY</li>
           </ul>
+          <a href="#contact" class="btn-primary footer-cta">Start a Project <i class="bi bi-arrow-right"></i></a>
         </div>
 
       </div>
 
-      <div class="footer__bottom">
-        <p>&copy; <span id="footerYear">2024</span> Alex Morgan. All rights reserved.</p>
-        <p>Crafted with <i class="bi bi-heart-fill" aria-hidden="true" style="color:var(--accent)"></i> and obsessive attention to detail.</p>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 Jordan Ellis. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#" class="footer-legal-link">Privacy Policy</a>
+          <span aria-hidden="true">·</span>
+          <a href="#" class="footer-legal-link">Terms of Use</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <!-- Back to top -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top" aria-hidden="true">
-    <i class="bi bi-arrow-up" aria-hidden="true"></i>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
   </button>
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>
